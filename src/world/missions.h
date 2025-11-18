@@ -12,7 +12,7 @@ typedef enum {
 } MissionID;
 
 // --- Function Prototypes for missions.c ---
-// tarks a specific mission as complete in the hero's status.
+// Marks a specific mission as complete in the hero's status.
 // hero A pointer to the hero whose mission will be marked.
 // mission_to_complete The ID of the mission to mark as complete.
 void mark_mission_complete(Hero* hero, MissionID mission_to_complete);

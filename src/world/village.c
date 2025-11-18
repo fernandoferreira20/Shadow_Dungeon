@@ -1,7 +1,7 @@
 #include "village.h" // include our header file
 #include <stdio.h> // for printing messages
 
-// the maximum kife pionts the hero life can have
+// the maximum life points the hero life can have
 #define MAX_LIFE_POINTS 20
 
 // restores the hero's life points to the maximum (20).

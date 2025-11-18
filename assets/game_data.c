@@ -53,7 +53,7 @@ const RoomDefinition* get_rotting_swamp_room(int dice_roll){
     return NULL; // should not happen
 }
 
-const RoomDefinition* get_hunted_mansion_room(int dice_roll){
+const RoomDefinition* get_haunted_mansion_room(int dice_roll){
     if(dice_roll >= 1 && dice_roll <= 6){
         return &HAUNTED_MANSION_ROOMS[dice_roll - 1];
     }

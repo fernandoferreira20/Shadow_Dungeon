@@ -11,12 +11,12 @@
 void initialize_new_hero(Hero* hero){
 	// we check if the pointer is valide just in case
 	if(hero == NULL){
-		return; // safety chack
+		return; // safety check
 	}
 
 	// set the main hero status
 	hero->life_points = STARTING_LIFE; // 20 life points
-	hero->coins = STARTING_COINS; // 0 coints
+	hero->coins = STARTING_COINS; // 0 coins
 
 	// Set all mission statuses to 0 (not complete)
     hero->missions.rotting_swamp = 0;

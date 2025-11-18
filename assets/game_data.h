@@ -10,10 +10,10 @@ typedef enum {
 
 // this struct holds the definition for a single room
 typedef struct RoomDefinition {
-    const char* name; // e.g., "Wiled Dog", "Poisonous Bog"
+    const char* name; // e.g., "Wild Dog", "Poisonous Bog"
     RoomType type; // FIGHT, TRAP, or EMPTY
-    int fatal_strike; // the base fatal stric value
-    int damage; // the base "damage" velue
+    int fatal_strike; // the base fatal strike value
+    int damage; // the base "damage" value
     int coins; // the base "coins" reward
 } RoomDefinition;
 
@@ -27,7 +27,7 @@ const RoomDefinition* get_rotting_swamp_room(int dice_roll);
 
 // gets the room definition for the Haunted Mansion
 // dice_roll The result of the d6 roll (1-6).
-const RoomDefinition* get_hunted_mansion_room(int dice_roll);
+const RoomDefinition* get_haunted_mansion_room(int dice_roll);
 
 // gets the room definition for the Crystal Cave
 // dice_roll The result of the d6 roll (1-6).
