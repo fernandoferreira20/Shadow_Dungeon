@@ -1,4 +1,0 @@
-man
-khbgjvù
-kbkghhlkh
-alex
