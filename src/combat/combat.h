@@ -5,7 +5,7 @@
 #include "../entities/enemies.h"
 
 //The result of combat
-typedef enum{
+typedef enum {
     COMBAT_VICTORY,
     COMBAT_DEFEAT,
     COMBAT_CONTINUE
