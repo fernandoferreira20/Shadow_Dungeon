@@ -17,4 +17,7 @@ int calculate_hero_attack(const Player *player);
 void apply_damage(Player *player, int damage);
 void award_coins(Player *player, int coins);
 
+int padovan(int n);
+bool is_in_padovan_sequence(int number);
+
 #endif
