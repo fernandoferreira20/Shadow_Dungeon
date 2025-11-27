@@ -57,3 +57,24 @@ void award_coins(Player *player, int coins){
     player->coins += coins;
     printf("You gained %d coins! Total: %d\n", coins, player->coins);
 }
+
+int padovan(int n){
+    if(n == 0 || n == 1 || n == 2){
+        return 1;
+    }
+    return padovan(n-2) + padovan(n-3);
+}
+
+bool is_in_padovan_sequence(int number){
+    for (int i = 0; i < 20; i++){
+        int p = padovan(i);
+        if(p == number){
+            return true;
+        }
+
+        if(p>number){
+            break;
+        }
+    }
+    return false;
+}
