@@ -1,4 +1,4 @@
-#ifdef ENEMIES_H
+#ifndef ENEMIES_H
 #define ENEMIES_H
 
 #include "../../assets/game_data.h" // To access RoomDefinition

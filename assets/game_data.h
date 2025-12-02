@@ -18,8 +18,6 @@ typedef struct RoomDefinition {
 } RoomDefinition;
 
 // --- Dungeon Room Definitions ---
-// These are the "getter" functions your teammates will use.
-// They get a pointer to the room data based on a dice roll (1-6).
 
 // gets the room definition for the Rotting Swamp
 // dice_roll The result of the d6 roll (1-6).
