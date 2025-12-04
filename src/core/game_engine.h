@@ -1,5 +1,5 @@
-#ifndef GAME_ENGINE.H
-#define GAME_ENGINE.H
+#ifndef GAME_ENGINE_H
+#define GAME_ENGINE_H
 
 #include "../include/game_types.h" // we need this because it contains important functions
 
