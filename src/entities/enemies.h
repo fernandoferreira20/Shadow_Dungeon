@@ -1,5 +1,5 @@
-#ifndef ENEMIES.H
-#define ENEMIES.H
+#ifndef ENEMIES_H
+#define ENEMIES_H
 
 #include "../../include/game_types.h"
 
