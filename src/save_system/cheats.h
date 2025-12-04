@@ -1,5 +1,5 @@
-#ifndef CHEATS.H
-#define CHEATS.H
+#ifndef CHEATS_H
+#define CHEATS_H
 
 #include "../../include/game_types.c"
 
