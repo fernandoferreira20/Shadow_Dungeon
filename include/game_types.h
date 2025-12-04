@@ -44,6 +44,8 @@
     MissionType type;
     bool is_completed; 
     int progress_counter; // To know how many enemies we defeated 
+    bool key_recovered;
+    bool sword_recovered;
  } MissionStatus;
 
  /** @brief Represents a snapshot of the game state for saving */ 
