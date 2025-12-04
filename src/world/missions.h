@@ -1,25 +1,30 @@
 #ifndef MISSIONS_H
 #define MISSIONS_H
 
-// We need player.h to know what a 'Hero' is
-#include "../entities/player.h"
+#include "../../include/game_types.h"
 
-// An enum to give clear names to each mission
-typedef enum {
-    ROTTING_SWAMP,
-    HAUNTED_MANSION,
-    CRYSTAL_CAVE,
-} MissionID;
+/**
+ * @file missions.h
+ * @brief Managing mission selection and tracking the progress
+ */
 
-// --- Function Prototypes for missions.c ---
-// Marks a specific mission as complete in the hero's status.
-// hero A pointer to the hero whose mission will be marked.
-// mission_to_complete The ID of the mission to mark as complete.
-void mark_mission_complete(Hero* hero, MissionID mission_to_complete);
+/**
+ * @brief Initialize the standard missions in the GameData
+ * @param missions Array of MissionStatus to initialize
+ */
+void initialize_missions(MissionStatus missions[4]);
 
-// Checks if all 3 preliminary missions are complete.
-// hero A pointer to the hero to check.
-// 1 (true) if all 3 missions are complete, 0 (false) otherwise.
-int are_all_missions_complete(const Hero* hero);
+/**
+ * @brief Display the Menu to select the missions
+ * @param data Pointer to GameData to check completion status
+ * @return The selected mission index (or 0 to cancel)
+ */
+int select_mission(const GameData *data);
+
+/**
+ * @brief Mark a mission as completed
+ * @param mission Pointer to the specific MissionStatus to update
+ */
+void mark_mission_complete(MissionStatus *mission);
 
 #endif
