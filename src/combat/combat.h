@@ -21,7 +21,7 @@
 int hero_attack_roll(const Hero *hero);
 
 /**
- * @brief Executes a fight loop between Hero and Enemy.
+ * @brief Executes a fight loop between Hero and Enemy
  * * Logic:
  * 1. While both are alive:
  * 2. Hero attacks (calls hero_attack_roll)
