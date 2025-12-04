@@ -1,5 +1,5 @@
-#ifndef MENUS.H
-#define MENUS.H
+#ifndef MENUS_H
+#define MENUS_H
 
 /**
  * @file menus.h
