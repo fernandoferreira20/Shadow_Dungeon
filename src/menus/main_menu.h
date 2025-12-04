@@ -1,5 +1,5 @@
-#ifndef MAIN_MENU.H
-#define MAIN_MENU.H
+#ifndef MAIN_MENU_H
+#define MAIN_MENU_H
 
 #include "../../include/game_types.h"
 
