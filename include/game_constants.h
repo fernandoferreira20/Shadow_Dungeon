@@ -6,7 +6,7 @@
  * @brief Here we define the global constants and the important numbers used in this game
  */
 
-/** @brief Maximum life points that our hero can have */
+/** @brief Maximum life points that our hero can have */ 
 #define MAX_LIFE 20
 
 /** @brief The cost in coins to return to the village if we don't complete a mission */
