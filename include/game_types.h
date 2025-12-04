@@ -46,7 +46,7 @@
     int progress_counter; // To know how many enemies we defeated 
  } MissionStatus;
 
- /** @brief Represents a snapshot of the game state for saving */
+ /** @brief Represents a snapshot of the game state for saving */ 
  typedef struct SaveData {
     char data_time[MAX_STRING_LEN];
     int life_points;
