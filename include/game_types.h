@@ -1,5 +1,5 @@
-#ifndef GAME_TYPES.H
-#define GAME_TYPES.H
+#ifndef GAME_TYPES_H
+#define GAME_TYPES_H
 
 #include <stdbool.h>
 #include "game_constants.h" //used for the global constants
