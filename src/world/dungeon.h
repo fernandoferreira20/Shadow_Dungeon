@@ -1,38 +1,56 @@
 #ifndef DUNGEON_H
 #define DUNGEON_H
 
-#include <stdbool.h>
-#include "../entities/player.h"   //This is for the player structure
+#include "../../include/game_types.h"
+#include "../entities/enemies.h"
 
-//All mission types
-typedef enum{
-    MISSION_ROTTING_SWAMP = 1,
-    MISSION_HAUNTED_MANSION = 2,
-    MISSION_CRYSTAL_CAVE = 3,
-    MISSION_DARK_LORD_CASTLE = 4
-} MissionType;
+/**
+ * @file dungeon.h
+ * @brief Handles the dungeon generation and room managment
+ */
 
-//All room types
-typedef enum{
+/** @brief Represents the content of a single dungeon room */
+typedef enum {
     ROOM_EMPTY,
     ROOM_TRAP,
-    ROOM_ENEMY,
-    ROOM_SHOP
+    ROOM_FIGHT
 } RoomType;
 
-typedef struct Room Room;
-typedef struct Dungeon Dungeon;
+/** @brief Defines a single room within the dungeon */
+typedef struct DungeonRoom{
+    RoomType type;
+    /** @brief Contains the enemy data for fights or trap data for traps */
+    Enemy content;
+    bool is_cleared; //true if the room has been cleared from enemies
+} DungeonRoom;
 
-//The creation of the dungeon and its management
-Dungeon* create_dungeon(int mission_type);
-Room* get_current_room(Dungeon* dungeon);
-void move_to_the_next_room(Dungeon* dungeon);
-bool dungeon_is_complete(Dungeon* dungeon);
-void free_dungeon(Dungeon* dungeon);
+/** @brief Represents the entire active dungeon */
+typedef struct Dungeon {
+    DungeonRoom rooms[MAX_DUNGEON_ROOMS];
+    int current_room_index; //this is to track the player progress
+    MissionType mission_type;
+} Dungeon;
 
-//The information of the room
-RoomType room_get_type(const Room* room);
-bool room_is_completed(const Room* room);
-void room_mark_completed(Room* room);
+/**
+ * @brief Generates a new procedural dungeon
+ * * Algorithm:
+ * 1. Iterates from 0 to MAX_DUNGEON_ROOMS
+ * 2. Rolls a die for each room based on the Mission Table
+ * 3. Forces Mission Goals if they haven't appeared by room 7
+ * @param type The mission type
+ * @return A fully populated dungeon structure
+ */
+Dungeon create_dungeon(MissionType type);
+
+/**
+ * @brief Procces the logic for the current room
+ * * If there is a ROOM_FIGHT call the combat system
+ * * If there is a ROOM_TRAP applies the trap damage
+ * * If there is a ROOM_EMPTY prints message
+ * @param dungeon Pointer to the active dungeon
+ * @param hero Pointer to the hero
+ * @param status Pointer to the MissionStatus
+ */
+void process_current_room(Dungeon *dungeon, Hero *hero, MissionStatus *status);
 
 #endif

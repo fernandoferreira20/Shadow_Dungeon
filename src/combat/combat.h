@@ -1,25 +1,45 @@
 #ifndef COMBAT_H
 #define COMBAT_H
 
-#include <stdbool.h>
-#include "../entities/player.h"  //This is for the player structure
-#include "../entities/enemies.h"  //This is for the enemy structure
+#include "../../include/game_types.h"
+#include "../entities/enemies.h"
 
-//Combat result after a fight
-typedef enum{
-    COMBAT_VICTORY,
-    COMBAT_DEFEAT,
-    COMBAT_CONTINUE
-} CombatResult;
+/**
+ * @file combat.h
+ * @brief Manages standard combat logic and trap interactions
+ */
 
-//Combat functions
-CombatResult combat_encounter(Player *player, Enemy *enemy);
-int calculate_hero_attack(const Player *player);
-void apply_damage(Player *player, int damage);
-void award_coins(Player *player, int coins);
+/**
+ * @brief Calculates the hero's attack power for a single turn 
+ * * Logic: Roll die + bonuses
+ * * Bonues:
+ * - +1 if Sword is equipped
+ * - +2 if Hero Sword is equipped
+ * @param hero Pointer to hero
+ * @return The total attack value
+ */
+int hero_attack_roll(const Hero *hero);
 
-//Padovan sequence
-int padovan(int n);
-bool is_in_padovan_sequence(int number);
+/**
+ * @brief Executes a fight loop between Hero and Enemy
+ * * Logic:
+ * 1. While both are alive:
+ * 2. Hero attacks (calls hero_attack_roll)
+ * 3. If Attack > Enemy Fatal Strike: Enemy dies, Hero gets coins
+ * 4. Else: Hero takes Enemy Damage
+ * 5. Updates MissionStatus if a goal enemy is defeated
+ * @param hero Pointer to the hero
+ * @param enemy Pointer to the enemy being fought
+ * @param status Pointer to mission status (to increment kill counts)
+ */
+void fight_enemy(Hero *hero, Enemy *enemy, MissionStatus *status);
+
+/**
+ * @brief Applies the effect of a trap room
+ * * Logic varies by trap
+ * @param hero Pointer to hero
+ * @param trap Pointer to the enemy
+ */
+void apply_trap_effect(Hero *hero, const Enemy *trap);
 
 #endif

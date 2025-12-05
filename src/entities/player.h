@@ -1,49 +1,35 @@
-// It prevents the compiler from including this file more than once
 #ifndef PLAYER_H
-#define PLAYER_H // This 'defines' PLAYER_H, so the #ifndef check will fail next time
+#define PLAYER_H
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
+#include "../../include/game_types.h"
 
-// this struct holds all the items the player can posses.
-// we used 1 for 'true' (has the item) and 0 for 'false' (does not).
-typedef struct Inventory{
-    int health_potions; // Changed to health_potions (to count items)
-    int has_sword; // 0 or 1. Purchased from shop
-    int has_armor; // Changed from has_arrow to has_armor
-    int has_castle_key; // 0 or 1. Found in Haunted Mansion
-    int has_heros_sword; // 0 or 1. Found in Crystal Cave (added semicolon)
-} Inventory;
+/**
+ * @file player.h
+ * @brief Functions for managing the Hero
+ */
 
-// this struct holds the completion status for each mission.
-// we use 1 for 'true' (complete) and 0 for 'false' (not complete).
-typedef struct MissionStatus {
-    int rotting_swamp;
-    int haunted_mansion;
-    int crystal_cave;
-} MissionStatus;
+/**
+ * @brief Creates a new Hero with starting stats
+ * * Default: 20 Life Points, 0 Coins, 0 Items
+ * @return A capitalized Hero structure
+ */
+Hero create_hero();
 
-// this struct holds all the data for the main player
-typedef struct Hero {
-    int life_points;
-    int coins;
-    MissionStatus missions; // nestes the struct from above inside this one
-    Inventory inventory; // nestes the struct from above inside this one
-} Hero;
+/**
+ * @brief Updates the Hero's stats
+ * We make sure that the Life Points don't go below 0 and above 20
+ * Handling adding/removing coins
+ * @param hero Pointer to the Hero structure
+ * @param life_delta Change in life points (+ to heal, - to damage)
+ * @param coin_delta Change in coins (+ to add, - to remove)
+ */
+void update_hero_stats(Hero *hero, int life_delta, int coin_delta);
 
-// --- Function Prototypes for player.c ---
+/**
+ * @brief Checks if the Hero has been defeated
+ * @param hero Pointer to the Hero structure
+ * @return true if life_points <= 0, false otherwise
+ */
+bool is_hero_dead(const Hero *hero);
 
-//  sets a hero's status to the default new game values
-void initialize_new_hero(Hero* hero);
-
-// displays the hero's currents status and inventory
-void display_inventory(const Hero* hero);
-
-// --- Function Prototypes for village.c ---
-
-// Restores the hero's life points to the maximum (20).
-void rest_hero(Hero* hero); 
-
-
-#endif // This line closes the '#ifndef' block
+#endif
