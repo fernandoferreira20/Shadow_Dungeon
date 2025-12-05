@@ -8,6 +8,7 @@
  * @brief Utilities to manage the central GameData structure
  */
 
+// --- Dungeon Room Definitions ---
 /**
  * @brief Populates the active GameData from a SaveData snapshot
  * * Used when the player selects "Load Game". Copies stats, inventory,
