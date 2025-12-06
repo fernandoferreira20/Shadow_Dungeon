@@ -1,41 +1,49 @@
-#include "missions.h" // Include our own header
-#include <stddef.h> // for NULL
+/**
+* @file mission.c
+* @author Fernado 908697
+* @brief Implementation of mission logic, including initialization, menu display/selection, and completion status updates.
+*/
 
-// marks a specific mission as complete in the hero's status.
-// hero A pointer to the hero whose mission will be marked.
-// mission_to_complete The ID of the mission to mark as complete.
-void mark_mission_complete(Hero* hero, MissionID mission_to_complete){
-    if(hero == NULL){
-        return; // safety check
-    }
+#include "missions.h"
+#include <stdio.h>
+
+void initialize_missions(MissionStatus missions[4]){
+    // 0: Swamp, 1: Mansion, 2: Cave, 3: Castle
     
-    switch(mission_to_complete){
-        case ROTTING_SWAMP:
-            hero->missions.rotting_swamp = 1;
-        break;
-        case HAUNTED_MANSION:
-            hero->missions.haunted_mansion = 1;
-        break;
-        case CRYSTAL_CAVE:
-            hero->missions.crystal_cave = 1;
-        break;
+    for(int i = 0; i < 4; i++){
+        missions[i].type = (MissionType)(i + 1);
+        missions[i].is_completed = false;
+        missions[i].progress_counter = 0;
+        missions[i].key_recovered = false;
+        missions[i].sword_recovered = false;
     }
 }
 
-// hecks if all 3 preliminary missions are complete.
-// hero A pointer to the hero to check.
-// 1 (true) if all 3 missions are complete, 0 (false) otherwise.
-int are_all_missions_complete(const Hero* hero){
-    if(hero == NULL){
-        return 0; // safety check
-    }
-    
-    // checks if all three mission flags are 1
-    if(hero->missions.rotting_swamp && hero->missions.haunted_mansion && hero->missions.crystal_cave){
-        return 1; // All complete
-    }else{
-        return 0; // Not all completed
+int select_mission(const GameData *data){
+    int choice;
+
+    printf("\n--- MISSION SELECTION ---\n");
+    printf("1. Rotting Swamp %s\n", data->missions[0].is_completed ? "[COMPLETED]" : "");
+    printf("2. Haunted Mansion %s\n", data->missions[1].is_completed ? "[COMPLETED]" : "");
+    printf("3. Crystal Cave %s\n", data->missions[2].is_completed ? "[COMPLETED]" : "");
+
+    // Logic: Only show final boss id previous 3 are done
+    if(data->missions[0].is_completed && data->missions[1].is_completed && data->missions[2].is_completed){
+        printf("4. The Dark Lord's Castle\n")
     }
 
+    printf("0. Back / Cancel\n");
+    printf("Choose your destination: ");
 
+    if(scanf("%d", &choice != 1)){
+        while(getchar() != '\n'); // clear the buffer
+        return 0;
+    }
+    return choice;
+}
+
+void mark_mission_complete(MissionStatus *mission){
+    if(mission != NULL){
+        mission->is_completed = true;
+    }
 }

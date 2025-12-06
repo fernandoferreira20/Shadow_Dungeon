@@ -1,73 +1,56 @@
-#include "player.h" // include our header file
-#include <stdio.h> // we will need this for 'display_inventory' later
+/**
+* @file player.c
+* @author Fernado 908697
+* @brief Implementation of Hero mechanics: creation, stat validation, and death condition checks.
+*/
 
-// this are the starting values
-#define STARTING_LIFE 20
-#define STARTING_COINS 0
-#define STARTING_MISSIONS 0
-#define STARTING_ITEMS 0
+#include "player.h"
+#include <stddef.h> // for NULL
 
-// Sets a hero's stats to the default new game values.
-void initialize_new_hero(Hero* hero){
-	// we check if the pointer is valide just in case
-	if(hero == NULL){
-		return; // safety check
-	}
+Hero create_hero(){
+	Hero new_hero;
 
-	// set the main hero status
-	hero->life_points = STARTING_LIFE; // 20 life points
-	hero->coins = STARTING_COINS; // 0 coins
+	// initialze stander state
+	new_hero.life_points = 20;
+	new_hero.coins = 0;
+	new_hero.potions_count = 0;
 
-	// Set all mission statuses to 0 (not complete)
-    hero->missions.rotting_swamp = 0;
-    hero->missions.haunted_mansion = 0; 
-    hero->missions.crystal_cave = 0;
+	// initialze inventory flages to false
+	new_hero.has_sword = false;
+	new_hero.has_hero_sword = false;
+	new_hero.has_armor = false;
+	new_hero.has_key = false;
 
-	// set all the inventory items to 0
-	hero->inventory.health_potions = STARTING_ITEMS;
-	hero->inventory.has_sword = STARTING_ITEMS;
-	hero->inventory.has_armor = STARTING_ITEMS;
-	hero->inventory.has_castle_key = STARTING_ITEMS;
-	hero->inventory.has_heros_sword = STARTING_ITEMS;
+	return new_hero;
 }
 
-// displays the hero's current stats and inventory
-void display_inventory(const Hero* hero){
-	// we check if the pointer is valide just in case
+void update_hero_stats(Hero *hero, int life_delta, int coin_delta){
+	if(hero == NULL) return;
+
+	// apply life change
+	hero->life_points += life_delta;
+
+	// cap life points at 20 (Max)
+	if(hero->life_points > 20){
+		hero->life_points = 20;
+	}
+
+	// cap life points at 0 (Min)
+	if(hero->life_points < 0){
+		hero->life_points = 0;
+	}
+
+	// apply coin change
+	hero->coins += coin_delta;
+
+	// prevent negative coins
+	if(hero->coins < 0){
+		hero->coins = 0;
+	}
+}
+
+bool is_hero_dead(const Hero *hero){
 	if(hero == NULL){
-		return; // safe check
+		return (hero->life_points <= 0);
 	}
-
-	printf("\n ---- HERO INVENTORY ---- \n");
-	printf("Life Points: %d / %d\n", hero->life_points, STARTING_LIFE); // show current / max
-	printf("Coins:       %d\n", hero->coins);
-	printf("----------------------------\n");
-	printf("Items: \n");
-	
-	// prints item counts
-	printf(" - Health Potions: %d\n", hero->inventory.health_potions);
-
-	// print the equipament (only if the hero have it)	
-	if(hero->inventory.has_heros_sword){
-		printf(" - Hero's Sword (Equipped)\n");	
-	}else if(hero->inventory.has_sword){
-		printf(" - Sword (Equipped)\n");	
-	}else{
-		printf(" - No Weapon\n");
-	}
-
-	if(hero->inventory.has_armor){
-		printf(" - Armor (Equipped)\n");
-	}else{
-		printf(" - No Armor\n");
-	}
-
-	// print key items
-	printf("Key Item:\n");
-	if(hero->inventory.has_castle_key){
-		printf(" - Key to the Dark Lord's Castle\n");
-	}else{
-		printf(" - (No key items)\n");
-	}
-	printf("-----------------------------\n\n");
 }
