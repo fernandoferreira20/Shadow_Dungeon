@@ -1,87 +1,77 @@
-#include "final_boss.h"
-#include "../utils/random.h"
-#include "../utils/input.h"
-#include <stdio.h>
-#include <stdlib.h>
+/**
+ * @file mission_menu.c
+ * @author Alexandru 907625
+ * @brief Implementation of the Dark Lord fight and Padovan Sequence
+ */
 
-typedef enum {
-    MOVE_SHIELD = 1, //Rock
-    MOVE_MAGIC = 2, //Paper
-    MOVE_SWORD = 3 //Scissors
-} BattleMove;
+ #include <stdio.h>
+ #include <stdlib.h>
+ #include "final_boss.h"
+ #include "../../utils/random.h"
+ #include "../../utils/utils.h"
+ #include "../../include/game_constants.h"
 
-BattleMove get_dark_lord_move(){
-    return (BattleMove)(rand() % 3 + 1);
-}
+ // Implementing the Padovan Sequence
+ static int padovan_recursive(int n){
+    if(n == 0 || n == 1 || n == 2) return 1;
+    return padovan_recusive(n - 2) + padovan_recursive (n - 3);
+ }
 
-const char* move_to_string(BattleMove move){
-    switch(move){
-        case MOVE_SHIELD: return "Shield";
-        case MOVE_MAGIC: return "Magic";
-        case MOVE_SWORD: return "Sword";
-        default: return "Unknown";
+ int is_padovan(int number){
+    if(number < 1) return 0;
+    int n = 0;
+    int val = 0;
+    while(1) {
+        val = padovan_recursive(n);
+        if(val == number) return 1;
+        if(val > number) return 0;
+        n++;
     }
-}
+ }
 
-int determine_round_wiiner(BattleMove move_hero, BattleMove dark_lord_move){
-    if(hero_move == dark_lord_move){
-        return 0; //in case is a tie
-    }
+ // Implementing the final boss logic
+ int resolve_round(BossMove hero_move, BossMove boss_move){
+    if(hero_move == boss_move) return 0;
+    if((hero_move == MOVE_SHIELD && boss_move == MOVE_SWORD) || 
+       (hero_move == MOVE_SWORD && boss_move == MOVE_MAGIC) ||
+       (hero_move == MOVE_MAGIC && boss_move == MOVE_SHIELD)) return 1;
+    return -1;
+ }
 
-    if((hero_move == MOVE_SHIELD && dark_lord_move == MOVE_SWORD) || 
-        (hero_move == MOVE_SWORD && dark_lord_move == MOVE_MAGIC) || 
-        (hero_move == MOVE_MAGIC && dark_lord_move == MOVE_SHIELD)){
-            return 1; //hero wins
-    }
-    return -1; //dark lord wins
-}
+ void final_boss_fight(Hero *hero){
+    printf("\n=== FINAL BATTLE: THE DARK LORD ===\n");
+    printf("Win %d out of %d rounds to save the world!\n", BOSS_WINS_NEEDED, BOSS_TOTAL_ROUNDS);
 
-bool final_boss_battle(Player *player){
-    printf("\n=== FINAL BATTLE: THE MISTERIOUS DARK LORD ===\n");
-    printf("The fate of the world rests on this battle!\n");
-    printf("Rock-Paper-Scissors style combat begins!\n\n");
+    int hero_wins = 0, dark_lord_wins = 0, rounds = 0;
 
-    int hero_score = 0;
-    int dark_lord_score = 0;
-    int round = 1;
+    while (rounds < BOSS_TOTAL_ROUNDS && hero_wins < BOSS_WINS_NEEDED && dark_lord_wins < BOSS_WINS_NEEDED) {
+        printf("\n--- ROUND %d ---\n1. Shield\n2. Magic\n3. Sword\n", rounds + 1);
+        int input = get_int_input("Move: ", 1, 3);
+        BossMove hero_move = (BossMove)input;
+        BossMove boss_move = (BossMove)get_random_in_range(1, 3):
 
-    while (round <= 5 && hero_score < 3 && dark_lord_score < 3){
-        printf("--- Round %d of 5 ---\n", round);
-        printf("Hero: %d - Dark Lord: %d\n\n", hero_score, dark_lord_score);
+        const char *moves[] = {"", "Shield", "Magic", "Sword"};
+        printf("You: %s | Dark Lord: %s\n", moves[hero_move], moves[boss_move]);
 
-        printf("Chose your move:\n");
-        printf("1. Shield (Rock)\n");
-        printf("2. Magic (Paper)\n");
-        printf("3. Sword (Scissors)\n");
-
-        BattleMove hero_move = (BattleMove)get_valid_input(1, 3);
-        BattleMove dark_lord_move = get_darl_lord_move();
-
-        printf("\nYou chose: %s\n", move_to_string(hero_move));
-        printf("Dark Lord chose: %s\n", move_to_string(dark_lord_move));
-
-        int result = determine_round_winner(hero_move, dark_lord_move);
-
-        if(result == 1){
-            printf("You win this round!\n");
-            hero_score++;
-        } else if(result == -1){
-            printf("Dark Lord wins this round!\n");
-            dark_lord_score++;
+        int result = resolve_round(hero_move, boss_move);
+        if(result == 1) {
+            printf("You WIN round!\n");
+            hero_wins++;
+        } else if (result == -1){
+            printf("Dark Lord WINS round!\n");
+            dark_lord_wins++;
         } else {
-            printf("It's a tie! Round continues...\n");
+            printf("DRAW! Replaying round...\n");
+            continue;
         }
-
-        round++;
-        printf("\n");
+        rounds++;
     }
 
-    if(hero_score >= 3){
-        printf("VICTORY! You have defetead the mighty Dark Lord!\n");
-        printf("\nCONGRATULATION!\n");
-        return true;
+    if(hero_wins >= BOSS_WINS_NEEDED){
+        printf("\n*** CONGRATULATIONS! YOU DEFEATED THE DARK LORD! ***\n");
+        press_enter_to_continue();
     } else {
-        printf("DEFEAT! The Dark Lord has prevailed...\n");
-        return false;
+        printf("\nYou have been defeated...\n");
+        hero->life_points = 0;
     }
-}
+ }
