@@ -62,7 +62,7 @@
  /** @brief Node for the linked list of saved games */
  typedef struct SaveNode {
     SaveData data;  
-    struct SaveData *next;
+    struct SaveNode *next;
  } SaveNode;
 
  /** @brief The master game structure holding the active state */
