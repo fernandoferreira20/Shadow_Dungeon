@@ -1,68 +1,49 @@
-#include "game_data.h"  // We need our header for the struct definitions
-#include <stddef.h> // for NULL
+/**
+ * @file gamedata.c
+ * @author Fernando 908697
+ * @brief Implementation of game state management, handling the transfer of data between active game memory and save structures
+ */
 
-// --- Rotting Swamp Data (Table 2) ---
-// This array is "static", so it is PRIVATE to this file.
-// We use 'const' because this data should never change.
-static const RoomDefinition ROTTING_SWAMP_ROOMS[6] = {
-    // dice roll 1: "Wild Dog"
-    {"Wild Dog", ROOM_TYPE_FIGHT, 2, 1, 2},
+ #include "game_data.h"
+ #include <stddef.h> // for NULL
 
-    // dice roll 2: "Goblin"
-    {"Goblin", ROOM_TYPE_FIGHT, 3, 2, 4},
-
-    // dice roll 3: "Skeleton"
-    {"Skeleton", ROOM_TYPE_FIGHT, 2, 2, 3},
-
-    // dice roll 4: "Orc"
-    {"Orc", ROOM_TYPE_FIGHT, 4, 3, 6},
-
-    // dice roll 5: "Poisonous Bog"
-    {"Poisonous Bog", ROOM_TYPE_TRAP, 0, 6, 0}, // damage is 1-6, but we'll use 6 as a "max" Person 3 will have to add logic for the dice roll
-
-    // dice roll 6: "Orc General"
-    {"Orc General", ROOM_TYPE_FIGHT, 6, 3, 12}  
-};
-
-// --- Haunted Mansion Data (Table 3) ---
-static const RoomDefinition HAUNTED_MANSION_ROOMS[6] = {
-    {"Dark Hatch", ROOM_TYPE_TRAP, 0, 2, 0},
-    {"Bat", ROOM_TYPE_FIGHT, 1, 1, 1}, // Note: Table 3 has odd stats, e.g., Fatal Strike 1 for Bat?
-    {"Zombie", ROOM_TYPE_FIGHT, 2, 2, 2},
-    {"Phantom", ROOM_TYPE_FIGHT, 3, 2, 4},
-    {"Guardian Demon", ROOM_TYPE_FIGHT, 5, 4, 8}, // I'm guessing on stats for this one from Table 3
-    {"Greater Vampire", ROOM_TYPE_FIGHT, 7, 4, 10} // I'm guessing on stats for this one from Table 3
-};
-
-// --- Crystal Cave Data (Table 4) ---
-static const RoomDefinition CRYSTAL_CAVE_ROOMS[6] = {
-    {"Empty Room", ROOM_TYPE_EMPTY, 0, 0, 0},
-    {"Falling Crystals", ROOM_TYPE_TRAP, 0, 2, 0},
-    {"Unsafe Bridge", ROOM_TYPE_TRAP, 0, 3, 0},
-    {"Mysterious Chest", ROOM_TYPE_TRAP, 0, 2, 10},  // Special logic needed by Person 3
-    {"Steep Cliff", ROOM_TYPE_TRAP, 0, 6, 0},       // Damage 1-6
-    {"Ancient Dragon", ROOM_TYPE_FIGHT, 5, 10, 12} // Special logic needed by Person 3
-};
-
-// --- Function Definitions ---
-
-const RoomDefinition* get_rotting_swamp_room(int dice_roll){
-    if(dice_roll >= 1 && dice_roll <= 6){
-        return &ROTTING_SWAMP_ROOMS[dice_roll - 1];
+void load_game_data(GameData *data, const SaveData *save){
+    if(data == NULL || save == NULL){
+        return;
     }
-    return NULL; // should not happen
+
+    // copy the hero stats
+    data->current_hero = save->hero_snapshot;
+
+    // copy mission progess
+    for(int i = 0; i < 4; i++){
+        data->missions[i] = save->mission_snapshot[i];
+    }
 }
 
-const RoomDefinition* get_haunted_mansion_room(int dice_roll){
-    if(dice_roll >= 1 && dice_roll <= 6){
-        return &HAUNTED_MANSION_ROOMS[dice_roll - 1];
-    }
-    return NULL;
-}
+SaveData create_save_data(const GameData *data){
+    SaveData save;
 
-const RoomDefinition* get_crystal_cave_room(int dice_roll){
-    if(dice_roll >= 1 && dice_roll <= 6){
-        return &CRYSTAL_CAVE_ROOMS[dice_roll - 1];
+    // copy current state into the save object
+    save.hero_snapshot = data->current_hero;
+
+    // update simple counters for the save summary
+    save.life_points = data->current_hero.life_points;
+    save.coins = data->current_hero.coins;
+
+    // calculate total items (points + key + sword + armor, etc)
+    save.items_count = data->current_hero.potions_count;
+    if(data->current_hero.has_sword) save.items_count++;
+    if(data->current_hero.has_armor) save.items_count++;
+    if(data->current_hero.has_key) save.items_count++;
+
+    // copy missions
+    save.completed_missions_count = 0;
+    for(int i = 0; i < 4; i++){
+        save.mission_snapshot[i] = data->missions[i];
+        if(data->missions[i].is_completed){
+            save.completed_missions_count++;
+        }
     }
-    return NULL;
+    return save;
 }
