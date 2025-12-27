@@ -1,5 +1,5 @@
 /**
- * @file main_menu.c
+ * @file menu.c
  * @author Otajon 908553
  * @brief implementation of menu, building helper functions
  */

@@ -4,7 +4,6 @@
  * @brief implementation of main menu, calling helper functions, and konami code
  */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -12,13 +11,9 @@
 #include "../../include/game_types.h"
 #include "core/game_engine.h"
 #include "save_system/save_manager.h"
+#include "save_system/cheats.h"    
 #include "menus/menus.h"          
 #include "menus/main_menu.h"
-
-
-static char konami_code[] = {'w', 'w', 's', 's', 'a', 'd', 'a', 'd', 'b', 'a', ' '};
-static int konami_step = 0;
-static int cheats_unlocked = 0;
 
 
 /* Helper functions */
@@ -49,17 +44,6 @@ static int get_number(int min, int max) {
     }
 }
 
-static void check_konami(char input_char) {
-    if (konami_step < 11 && input_char == konami_code[konami_step]) {
-        konami_step++;
-        if (konami_step == 11) {
-            cheats_unlocked = 1;
-            printf("Cheats unlocked!\n");
-        }
-    } else {
-        konami_step = 0;
-    }
-}
 
 /* ========== 3 FUNCTIONS ========== */
 
@@ -69,19 +53,20 @@ void display_initial_menu(GameData *data) {
     while (1) {
         clear_screen();                    
         print_header("Initial Game Menu");
-        printf("1. New Game");
-        printf("2. Load Game");
+        printf("1. New Game\n");          
+        printf("2. Load Game\n");         
         
-        if (cheats_unlocked) {
+        if (data->cheats_unlocked) {
             printf("3. Cheats\n");
         }
         
-        int max_choice = cheats_unlocked ? 3 : 2;
+        int max_choice = data->cheats_unlocked ? 3 : 2;
         printf("Choose an action [1-%d]: ", max_choice);
         
         if (fgets(user_input, sizeof(user_input), stdin) != NULL) {
             if (strlen(user_input) == 2 && user_input[1] == '\n') {
-                check_konami(user_input[0]);
+                /* Using cheats.c function */
+                check_konami_code(data, user_input[0]);
                 continue;
             }
             
@@ -91,9 +76,8 @@ void display_initial_menu(GameData *data) {
                     handle_new_game(data);
                 } else if (choice == 2) {
                     display_load_game_menu(data);
-                } else if (choice == 3 && cheats_unlocked) {
-                    printf("Cheats menu coming soon!\n");
-                    wait_for_enter();
+                } else if (choice == 3 && data->cheats_unlocked) {
+                    display_cheats_menu(data);
                 } else {
                     printf("Invalid choice!\n");
                     wait_for_enter();
