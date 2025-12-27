@@ -1,3 +1,10 @@
+/**
+ * @file main_menu.c
+ * @author Otajon 908553
+ * @brief implementation of main menu, calling helper functions, and konami code
+ */
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -5,30 +12,22 @@
 #include "../../include/game_types.h"
 #include "core/game_engine.h"
 #include "save_system/save_manager.h"
+#include "menus/menus.h"          
 #include "menus/main_menu.h"
 
-/* Konami code: w w s s a d a d b a [Space] */
+
 static char konami_code[] = {'w', 'w', 's', 's', 'a', 'd', 'a', 'd', 'b', 'a', ' '};
 static int konami_step = 0;
-static int cheats_unlocked = 0; /* 0 = hidden, 1 = shown */
-
-/* Clear screen function */
-static void clear_screen() {
-    #ifdef _WIN32
-        system("cls");  /* Windows */
-    #else
-        system("clear"); /* Linux/Mac */
-    #endif
-}
+static int cheats_unlocked = 0;
 
 
+/* Helper functions */
 static void wait_for_enter() {
     printf("Press Enter to continue...");
     while (getchar() != '\n');
     getchar();
 }
 
-/* Get number from user */
 static int get_number(int min, int max) {
     int num;
     char input[100];
@@ -50,7 +49,6 @@ static int get_number(int min, int max) {
     }
 }
 
-/* Check Konami code input */
 static void check_konami(char input_char) {
     if (konami_step < 11 && input_char == konami_code[konami_step]) {
         konami_step++;
@@ -59,7 +57,7 @@ static void check_konami(char input_char) {
             printf("Cheats unlocked!\n");
         }
     } else {
-        konami_step = 0; /* Wrong input, reset */
+        konami_step = 0;
     }
 }
 
@@ -69,12 +67,11 @@ void display_initial_menu(GameData *data) {
     char user_input[100];
     
     while (1) {
-        clear_screen();
-        printf("Initial Game Menu :\n");
-        printf("1. New Game\n");
-        printf("2. Load Game\n");
+        clear_screen();                    
+        print_header("Initial Game Menu");
+        printf("1. New Game");
+        printf("2. Load Game");
         
-        /* Show Cheats if unlocked */
         if (cheats_unlocked) {
             printf("3. Cheats\n");
         }
@@ -83,13 +80,11 @@ void display_initial_menu(GameData *data) {
         printf("Choose an action [1-%d]: ", max_choice);
         
         if (fgets(user_input, sizeof(user_input), stdin) != NULL) {
-            /* Check if single character (maybe Konami code) */
             if (strlen(user_input) == 2 && user_input[1] == '\n') {
                 check_konami(user_input[0]);
-                continue; /* Don't process as menu choice */
+                continue;
             }
             
-            /* menu choice */
             int choice;
             if (sscanf(user_input, "%d", &choice) == 1) {
                 if (choice == 1) {
@@ -113,7 +108,7 @@ void display_initial_menu(GameData *data) {
 
 void handle_new_game(GameData *data) {
     clear_screen();
-    printf("=== NEW GAME ===\n\n");
+    print_header("NEW GAME");              
     printf("Hero created with:\n");
     printf("- 20 life points\n");
     printf("- 0 coins\n");
@@ -122,7 +117,6 @@ void handle_new_game(GameData *data) {
     
     wait_for_enter();
     
-    /* Start the game */
     initialize_game(data);
     run_game_loop(data);
 }
@@ -130,14 +124,11 @@ void handle_new_game(GameData *data) {
 void display_load_game_menu(GameData *data) {
     while (1) {
         clear_screen();
-        printf("Saved Games :\n");
+        print_header("LOAD GAME");         
         
-
-        /* Get saved games */
         SaveNode *saves = get_save_list(data);
         int save_count = 0;
         
-        /* Show each save */
         SaveNode *current = saves;
         while (current != NULL) {
             save_count++;
@@ -155,16 +146,16 @@ void display_load_game_menu(GameData *data) {
             printf("No saved games found.\n");
         }
         
-        printf("\n%d. Back to Main Menu\n", save_count + 1);
+        print_divider();                    
+        printf("%d. Back to Main Menu\n", save_count + 1);
         printf("Select a game [1-%d]: ", save_count + 1);
         
         int choice = get_number(1, save_count + 1);
         
         if (choice == save_count + 1) {
-            return; /* Go back */
+            return;
         }
         
-        /* menu options */
         clear_screen();
         printf("1. Load\n");
         printf("2. Delete\n");
@@ -173,7 +164,6 @@ void display_load_game_menu(GameData *data) {
         int action = get_number(1, 2);
         
         if (action == 1) {
-            /* Load game */
             if (load_save(data, choice)) {
                 printf("Game loaded successfully!\n");
                 wait_for_enter();
@@ -184,7 +174,6 @@ void display_load_game_menu(GameData *data) {
                 wait_for_enter();
             }
         } else {
-            /* Delete game */
             printf("Are you sure you want to permanently delete the save? [Y/N]: ");
             char answer[10];
             fgets(answer, sizeof(answer), stdin);
