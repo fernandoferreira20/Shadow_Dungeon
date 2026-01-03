@@ -1,0 +1,145 @@
+ /**
+ * @file main_menu.c
+ * @author Otajon 908553
+ * @brief implementation of main menu, calling helper functions, and konami code
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#include "game_types.h"
+#include "core/game_engine.h"
+#include "save_system/save_manager.h"
+#include "save_system/cheats.h"    
+#include "menus/menus.h"          
+#include "menus/main_menu.h"
+#include "utils/utils.h" // Standard utilities
+
+void display_initial_menu(GameData *data) {
+    char user_input[100];
+    
+    while (1) {
+        clear_screen();                    
+        print_header("Initial Game Menu");
+        printf("1. New Game\n");          
+        printf("2. Load Game\n");         
+        
+        if (data->cheats_unlocked) {
+            printf("3. Cheats\n");
+        }
+        
+        int max_choice = data->cheats_unlocked ? 3 : 2;
+        printf("Choose an action [1-%d]: ", max_choice);
+        
+        // We use fgets here instead of get_int_input because we need to detect
+        // letters for the Konami Code (Cheat System)
+        if (fgets(user_input, sizeof(user_input), stdin) != NULL) {
+            int choice;
+            
+            // 1. Check if it is a number
+            if (sscanf(user_input, "%d", &choice) == 1) {
+                if (choice == 1) {
+                    handle_new_game(data);
+                } else if (choice == 2) {
+                    display_load_game_menu(data);
+                } else if (choice == 3 && data->cheats_unlocked) {
+                    display_cheats_menu(data);
+                } else {
+                    printf("Invalid choice! Please choose 1-%d.\n", max_choice);
+                    press_enter_to_continue();
+                }
+            } 
+            // 2. If not a number, check for Cheat Codes
+            else {
+                if (strlen(user_input) > 0) {
+                    check_konami_code(data, user_input[0]);
+                }
+            }
+        }
+    }
+}
+
+void handle_new_game(GameData *data) {
+    clear_screen();
+    print_header("NEW GAME");              
+    printf("Hero created with:\n");
+    printf("- %d life points\n", MAX_LIFE);
+    printf("- 0 coins\n");
+    printf("- 0 items\n");
+    printf("- 0 completed missions\n\n");
+    
+    press_enter_to_continue();
+    
+    initialize_data(data);
+    run_game_loop(data);
+}
+
+void display_load_game_menu(GameData *data) {
+    while (1) {
+        clear_screen();
+        print_header("LOAD GAME");         
+        
+        SaveNode *saves = get_save_list(data);
+        int save_count = 0;
+        
+        SaveNode *current = saves;
+        while (current != NULL) {
+            save_count++;
+            printf("%d. %s | HP: %d | Coin: %d | Missions: %d\n",
+                   save_count,
+                   current->data.date_time,
+                   current->data.hero_snapshot.life_points,
+                   current->data.hero_snapshot.coins,
+                   current->data.completed_missions_count);
+            current = current->next;
+        }
+        
+        if (save_count == 0) {
+            printf("No saved games found.\n");
+        }
+        
+        print_divider();                    
+        printf("%d. Back to Main Menu\n", save_count + 1);
+        
+        int choice = get_int_input("Select a save: ", 1, save_count + 1);
+        
+        if (choice == save_count + 1) {
+            return;
+        }
+        
+        clear_screen();
+        printf("Selected Save #%d\n", choice);
+        printf("1. Load\n");
+        printf("2. Delete\n");
+        printf("3. Cancel\n");
+        
+        int action = get_int_input("Action: ", 1, 3);
+        
+        if (action == 1) {
+            if (load_save(data, choice)) {
+                printf("Game loaded successfully!\n");
+                press_enter_to_continue();
+                run_game_loop(data); // Start game with loaded data
+                return;
+            } else {
+                printf("Failed to load game.\n");
+                press_enter_to_continue();
+            }
+        } else if (action == 2) {
+            printf("Are you sure you want to delete this save? (1=Yes, 0=No): ");
+            int confirm = get_int_input("", 0, 1);
+            
+            if (confirm == 1) {
+                if (delete_save(data, choice)) {
+                    printf("Save deleted.\n");
+                } else {
+                    printf("Failed to delete.\n");
+                }
+            } else {
+                printf("Delete cancelled.\n");
+            }
+            press_enter_to_continue();
+        }
+    }
+}
