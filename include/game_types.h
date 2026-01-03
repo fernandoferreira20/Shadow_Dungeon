@@ -22,7 +22,7 @@
 
  /** @brief Used to represent the specific mission */
  typedef enum {
-    MISSION_SWAMP = 1,
+    MISSION_SWAMP = 0, // Start at 0 to match array indexing
     MISSION_MANSION,
     MISSION_CAVE,
     MISSION_CASTLE
@@ -50,13 +50,10 @@
 
  /** @brief Represents a snapshot of the game state for saving */ 
  typedef struct SaveData {
-    char data_time[MAX_STRING_LEN];
-    int life_points;
-    int coins;
-    int items_count;
+    char date_time[MAX_STRING_LEN];
     int completed_missions_count;
-    Hero hero_snapshot;
-    MissionStatus mission_snapshot[4];
+    Hero hero_snapshot; // conatins life, coins, items
+    MissionStatus mission_snapshot[MAX_MISSIONS];
  } SaveData;
 
  /** @brief Node for the linked list of saved games */
@@ -68,7 +65,7 @@
  /** @brief The master game structure holding the active state */
  typedef struct GameData {
     Hero current_hero;
-    MissionStatus missions[4]; // tracking all the missions
+    MissionStatus missions[MAX_MISSIONS]; // tracking all the missions
     SaveNode *save_list_head; // head of the linked lists
     bool cheats_unlocked; // true if the Konami code was entered
  } GameData;

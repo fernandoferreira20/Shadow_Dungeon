@@ -1,7 +1,7 @@
 #ifndef VILLAGE_H
 #define VILLAGE_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
 
 /**
  * @file village.h
@@ -10,27 +10,28 @@
 
 /**
  * @brief Display the Village Menu
- * * Options:
- * 1. Start a mission
- * 2. Rest (Restore life)
- * 3. Inventory
- * 4. Save Game
- * 5. Exit
- * @param data Poiner to GameData structure
+ * @param data Pointer to GameData structure
  */
-void display_village_menu(GameData *data);
+void display_village_menu(const GameData *data);
 
 /**
- * @brief Restore Hero's life points (to MAX_LIFE 20)
+ * @brief Restore Hero's life points (to MAX_LIFE)
  * @param hero Pointer to the hero to heal
  */
 void rest_in_village(Hero *hero);
 
 /**
  * @brief Handling the logic to exit the game
- * * Display a warning message such as "Remember to save the game" before closing
  * @param data Pointer to GameData structure
  */
 void perform_exit_sequence(GameData *data);
+
+/**
+ * @brief Main Loop of the Village
+ * * Handles user input to choose between Missions, Rest, Inventory, Save or Exit
+ * @param data Pointer to GameData structure
+ * @return int: The Mission ID selected (0-3), or -1 to Exit Game
+ */
+int enter_village(GameData *data);
 
 #endif

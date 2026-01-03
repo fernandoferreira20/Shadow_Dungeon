@@ -1,7 +1,8 @@
 #ifndef FINAL_BOSS_H
 #define FINAL_BOSS_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
+#include "game_constants.h" // needed do BOSS_WINS_NEEDED
 
 /**
  * @file final_boss.h

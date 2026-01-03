@@ -12,6 +12,9 @@
 /** @brief The cost in coins to return to the village if we don't complete a mission */
 #define COST_TO_RETURN_VILLAGE 50
 
+/** @brief The total number of available missions in the game */
+#define MAX_MISSIONS 4
+
 /** @brief The number of mission required to complete to be able to unlock the final boss battle */
 #define REQUIRED_MISSIONS 3
 
@@ -28,6 +31,6 @@
 #define BOSS_TOTAL_ROUNDS 5
 
 /** @brief Maximum lenght for string buffers */
-#define MAX_STRING_LEN 50
+#define MAX_STRING_LEN 64
 
 #endif 

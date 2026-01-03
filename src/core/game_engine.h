@@ -1,7 +1,7 @@
 #ifndef GAME_ENGINE_H
 #define GAME_ENGINE_H
 
-#include "../include/game_types.h" // we need this because it contains important functions
+#include "game_types.h" // we need this because it contains important functions
 
 /** 
  * @file game_engine.h
@@ -13,7 +13,7 @@
   * * Sets hero to 20 life points, 0 coins, resets missions, and prepares the game data
   * @param data Pointer to the main GameData structure
   */
-void initialize_game(GameData *data); // we call this function from game_types header
+void initialize_data(GameData *data); // we call this function from game_types header
 
 /** 
  * @brief The main execution of the game loop

@@ -1,7 +1,7 @@
 #ifndef MISSIONS_H
 #define MISSIONS_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
 
 /**
  * @file missions.h

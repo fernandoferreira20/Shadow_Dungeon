@@ -1,7 +1,7 @@
 #ifndef CHEATS_H
 #define CHEATS_H
 
-#include "../../include/game_types.c"
+#include "game_types.h"
 
 /**
  * @file cheats.c

@@ -1,7 +1,7 @@
 #ifndef SAVE_MANAGER_H
 #define SAVE_MANAGER_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
 
 /**
  * @file save_manager.h

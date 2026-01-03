@@ -1,7 +1,7 @@
 #ifndef SHOP_H
 #define SHOP_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
 
 /**
  * @file shop.h

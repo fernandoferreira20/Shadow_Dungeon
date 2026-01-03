@@ -1,7 +1,7 @@
 #ifndef GAME_DATA_H
 #define GAME_DATA_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
 
 /**
  * @file game_data.h

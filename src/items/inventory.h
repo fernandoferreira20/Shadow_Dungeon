@@ -1,7 +1,7 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
 
 /**
  * @file inventory.h

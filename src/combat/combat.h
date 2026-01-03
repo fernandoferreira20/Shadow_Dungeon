@@ -1,8 +1,8 @@
 #ifndef COMBAT_H
 #define COMBAT_H
 
-#include "../../include/game_types.h"
-#include "../entities/enemies.h"
+#include "game_types.h"
+#include "entities/enemies.h"
 
 /**
  * @file combat.h

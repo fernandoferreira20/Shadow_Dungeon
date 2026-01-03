@@ -1,7 +1,7 @@
 #ifndef MAIN_MENU_H
 #define MAIN_MENU_H
 
-#include "../../include/game_types.h"
+#include "game_types.h"
 
 /**
  * @file main_menu.h

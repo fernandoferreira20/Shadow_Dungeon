@@ -1,8 +1,8 @@
 #ifndef MISSION_MENU_H
 #define MISSION_MENU_H
 
-#include "../../include/game_types.h"
-#include "../world/dungeon.h"
+#include "game_types.h"
+#include "world/dungeon.h"
 
 /**
  * @file mission_menu.h
