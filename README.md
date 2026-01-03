@@ -1,20 +1,56 @@
 # Legend of the Lost Code
 
-**Author:** Fernando 908697
-**Project:** RPG Game in C
+**Author:** Fernando 908697  
+**Course Project:** RPG Game in C
 
 ## Description
-This is a turn-based RPG game where the hero fights monsters in different areas (Swamp, Mansion, Cave) to defeat the Dark Lord.
+Legend of the Lost Code is a console-based, turn-based RPG written in C.  
+The player explores different areas, fights enemies using dice-based mechanics, completes missions, manages inventory and gold, and ultimately faces the Dark Lord in a final battle.
 
-## How to Compile
-You can compile the game using the included Makefile.
+## Features
+- Turn-based combat system  
+- Multiple areas and missions (Swamp, Mansion, Cave)  
+- Player, enemies, inventory, and shop system  
+- Save/load system  
+- Cheat system  
+- Final boss encounter  
+- Modular project structure  
 
-1. Open the terminal in this folder.
-2. Type `make` and press Enter.
-3. Run the game by typing `./game` (or `game.exe` on Windows).
+## Project Structure
+.
+├── Makefile
+├── README.md
+├── assets/ # Game data and helpers
+├── include/ # Global headers and constants
+├── src/ # Source code (game logic)
+│ ├── combat
+│ ├── core
+│ ├── entities
+│ ├── items
+│ ├── menus
+│ ├── save_system
+│ ├── utils
+│ └── world
+└── docs/ # Design and Doxygen documentation
 
-## Debugging (Sanitizer)
-This project includes a debug mode to check for memory leaks.
-To use it, type:
-make debug
-./game_debug
+## Compilation
+This project uses a Makefile.
+
+make
+Running the Game
+After compilation, run:
+
+- ./shadow_dungeon
+Or use:
+- make run
+
+Debug Mode
+To display the detected source files:
+- make debug
+
+Documentation
+Doxygen configuration files are available in:
+- docs/Doxygen/
+
+Notes
+- Written in standard C
