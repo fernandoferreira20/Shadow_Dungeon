@@ -14,7 +14,7 @@ CFLAGS = -Wall -Wextra -g -O2 -Iinclude -Isrc -Iassets
 SRCS := $(shell find src assets -name '*.c')
 
 # Creates the list of objects (.o) while maintaining the folder structure
-OBJS:= $(SRCS: .c = .o)
+OBJS := $(SRCS:.c=.o)
 
 # --- Rules ---
 
