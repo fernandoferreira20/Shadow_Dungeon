@@ -15,7 +15,7 @@ void seed_random(){
 
 int roll_die(){
     // returns a number between 1 and 6
-    return(rand() % 6) + 1;
+    return rand() % 6 + 1;
 }
 
 int flip_coin(){

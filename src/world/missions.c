@@ -20,7 +20,6 @@ void initialize_missions(MissionStatus missions[4]){
 }
 
 int select_mission(const GameData *data){
-    // int choice;  <-- DELETE OR COMMENT OUT THIS LINE (Line 23)
     
     printf("\n--- MISSION SELECTION ---\n");
     printf("1. Rotting Swamp %s\n", data->missions[0].is_completed ? "[COMPLETED]" : "");
