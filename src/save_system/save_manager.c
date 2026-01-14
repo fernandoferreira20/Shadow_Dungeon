@@ -8,26 +8,49 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h> // Required for timestamp
 #include "save_manager.h"
-#include "game_data.h" // Needed for create_save_data/load_game_data
+//#include "game_data.h" // Needed for create_save_data/load_game_data
 #include "game_types.h"
 
 void save_game(GameData *data) {
-    /* Create new save node */
+    if(data == NULL){
+        return;
+    }
+
+    /*Allocate memory for the new node*/
     SaveNode *new_save = (SaveNode*)malloc(sizeof(SaveNode));
-    if (new_save == NULL) {
+    if(new_save == NULL){
         printf("Error: Cannot allocate memory for save!\n");
         return;
     }
-    
-    /* Create the save snapshot (Timestamp is handled inside create_save_data) */
-    new_save->data = create_save_data(data);
-    
-    /* Add to front of linked list */
+
+    /*Generate Timestamp (Day-Month-Year Hour:Minute:Second)*/
+    time_t now = time(NULL);
+    struct tm * t = localtime(&now);
+    strftime(new_save->data.date_time, MAX_STRING_LEN, "%d-%m-%Y %H:%M:%S", t);
+
+    /*Copy Hero Stats*/
+    new_save->data.hero_snapshot = data->current_hero;
+
+    /*Copy mission progress*/
+    int completed_count = 0;
+    for(int i = 0; i < MAX_MISSIONS; i++){
+        // copy the mission stats array
+        new_save->data.mission_snapshot[i] = data->missions[i];
+
+        // count for the complited for the save summary
+        if(data->missions[i].is_completed){
+            completed_count++;
+        }
+    }
+    new_save->data.completed_missions_count = completed_count;
+
+    /* Link to the list*/
     new_save->next = data->save_list_head;
     data->save_list_head = new_save;
-    
-    printf("Game saved successfully at %s\n", new_save->data.date_time);
+
+    printf("Game saved succesfully at %s\n", new_save->data.date_time);
 }
 
 SaveNode* get_save_list(GameData *data) {
@@ -35,31 +58,33 @@ SaveNode* get_save_list(GameData *data) {
 }
 
 bool delete_save(GameData *data, int index) {
-    if (index < 1) return false;
-    
+    if (index < 1 || data->save_list_head == NULL){
+        return false;
+    }
+
     SaveNode *current = data->save_list_head;
     SaveNode *prev = NULL;
     int count = 1;
-    
-    /* Find the node to delete */
-    while (current != NULL && count < index) {
+
+    /*find the node to delete*/
+    while(current != NULL && count < index){
         prev = current;
         current = current->next;
         count++;
     }
-    
-    if (current == NULL) {
-        return false;  /* Index out of bounds */
+
+    if(current == NULL){
+        return false; // index out of the bounds
     }
-    
-    /* Remove from linked list */
-    if (prev == NULL) {
-        data->save_list_head = current->next;  /* Removing head */
-    } else {
+
+    /*remove from the linked list*/
+    if(prev == NULL){
+        data->save_list_head = current->next; // removing head
+    }else{
         prev->next = current->next;
     }
     
-    /* Free memory */
+    /*free memory*/
     free(current);
     return true;
 }
@@ -77,9 +102,13 @@ bool load_save(GameData *data, int index) {
     if (current == NULL) {
         return false;
     }
+
+    /*restore the data from the snapshot to the active game*/
+    data->current_hero = current->data.hero_snapshot;
     
-    /* Load the data */
-    load_game_data(data, &current->data);
+    for(int i = 0; i < MAX_MISSIONS; i++){
+        data->missions[i] = current->data.mission_snapshot[i];
+    }
     
     return true;
 }

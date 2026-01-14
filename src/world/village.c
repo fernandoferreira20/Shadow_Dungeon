@@ -88,9 +88,8 @@ int enter_village(GameData *data) {
                 break;
 
            case 4:
-                // Assuming save_manager has 'save_game'
-                // save_game(data); 
-                printf("Game Saved! (Simulated)\n");
+                // Call the save function
+                save_game(data); 
                 press_enter_to_continue();
                 break;
                 
