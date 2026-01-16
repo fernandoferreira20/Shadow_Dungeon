@@ -43,12 +43,20 @@ void rest_in_village(Hero *hero){
     printf("* You slept soundly. Your health is fully restored to %d HP! *\n", MAX_LIFE);
 }
 
-void perform_exit_sequence(GameData *data){
+bool perform_exit_sequence(GameData *data){
     (void)data;
-    printf("\n-----------------------------\n");
-    printf("Leaving the world...\n");
-    printf("Remember to save the game so you do not lose your progress!\n");
-    printf("Goodbye, Hero.\n");
+    printf("\nYou are exiting the game, remember to save the game so as not to lose your progress.\n");
+    printf("Are you sure to proceed? [1=Yes / 0=No]: ");
+    
+    int choice = get_int_input("", 0, 1);
+    
+    if(choice == 1) {
+        printf("Goodbye, Hero.\n");
+        return true; // Confirm Exit
+    } else {
+        printf("Exit cancelled. Returning to village.\n");
+        return false; // Cancel Exit
+    }
 }
 
 // NOTE: We return 'int' now to tell the Main Engine what to do next
@@ -83,7 +91,7 @@ int enter_village(GameData *data) {
                 printf("\nWould you like to visit the shop? (1=Yes, 0=No)\n");
                 int shop_choice = get_int_input("> ", 0, 1);
                 if(shop_choice == 1) {
-                     display_shop_menu(&data->current_hero);
+                    display_shop_menu(&data->current_hero);
                 }
                 break;
 
@@ -94,9 +102,11 @@ int enter_village(GameData *data) {
                 break;
                 
             case 5:
-                perform_exit_sequence(data);
-                return -1; // Signal to exit the entire program
-
+                if(perform_exit_sequence(data)){
+                    return -1; // exit comfirmed
+                }
+                break;
+                // If false, the loop continues and menu reappears
             default:
                 break;
         }

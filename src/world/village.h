@@ -24,7 +24,7 @@ void rest_in_village(Hero *hero);
  * @brief Handling the logic to exit the game
  * @param data Pointer to GameData structure
  */
-void perform_exit_sequence(GameData *data);
+bool perform_exit_sequence(GameData *data);
 
 /**
  * @brief Main Loop of the Village

@@ -55,7 +55,10 @@
 
     // Loop until one side wins enough rounds OR we run out of rounds
     while (rounds < BOSS_TOTAL_ROUNDS && hero_wins < BOSS_WINS_NEEDED && dark_lord_wins < BOSS_WINS_NEEDED) {
-        printf("\n--- ROUND %d ---\n1. Shield\n2. Magic\n3. Sword\n", rounds + 1);
+        printf("\n| Final Fight | Round %d of %d | Hero %d - Dark Lord %d. |\n", 
+               rounds + 1, BOSS_TOTAL_ROUNDS, hero_wins, dark_lord_wins);
+        printf("Available moves\n");
+        printf("1. Shield\n2. Magic\n3. Sword\n");
         
         // Use standard input utility
         int input = get_int_input("Choose your move: ", 1, 3);

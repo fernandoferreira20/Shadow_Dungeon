@@ -1,4 +1,4 @@
- /**
+/**
  * @file game_engine.c
  * @brief Initialize a new game state and runs the logic
  */
@@ -15,27 +15,38 @@
 #include "world/dungeon.h"
 #include "utils/utils.h"
 #include "entities/player.h"
+#include "combat/final_boss.h"
 
 void initialize_data(GameData *data){
     if(data == NULL) return;
 
-    // Safety: Clear everything first
+    // Save the pointer to the save list so we don't lose it
+    SaveNode *backup_saves = data->save_list_head;
+
+    // Keep the cheats unlocked if they were already entered
+    bool backup_cheats = data->cheats_unlocked;
+
+    // Safety: Clear everything first 
     memset(data, 0, sizeof(GameData));
+
+    // Restore the saved list and settings
+    data->save_list_head = backup_saves;
+    data->cheats_unlocked = backup_cheats;
 
     // Reset hero stats
     data->current_hero.life_points = MAX_LIFE;
     data->current_hero.coins = 0;
     data->current_hero.potions_count = 0;
 
-    // Initialize Missions (using the enum values 0-3)
+    // Initialize missions (using the enum values 0-3)
     for(int i = 0; i < MAX_MISSIONS; i++){
         data->missions[i].type = (MissionType)i;
         data->missions[i].is_completed = false;
+        // Ensure counters are reset for the new game
+        data->missions[i].progress_counter = 0;
+        data->missions[i].key_recovered = false;
+        data->missions[i].sword_recovered = false;
     }
-    
-    // Specific setup if needed
-    data->save_list_head = NULL;
-    data->cheats_unlocked = false;
 }
 
 void run_game_loop(GameData *data){
@@ -60,10 +71,47 @@ void run_game_loop(GameData *data){
 
         // 3. Handle Mission Start
         MissionType m_type = (MissionType)mission_id;
-        
-        // Generate the dungeon
-        Dungeon current_dungeon = create_dungeon(m_type);
         MissionStatus *current_status = &data->missions[mission_id];
+        
+        // Handle Final Boss Mission separately
+        if (m_type == MISSION_CASTLE) {
+            // Verify prerequisites (Must complete previous 3 missions)
+            if(!data->missions[0].is_completed || !data->missions[1].is_completed || !data->missions[2].is_completed){
+                 printf("You cannot enter the castle yet! Complete all other missions first.\n");
+                 press_enter_to_continue();
+                 continue;
+            }
+
+            printf("\n--- APPROACHING THE DARK LORD'S CASTLE ---\n");
+            press_enter_to_continue();
+
+            // Trigger the Rock-Paper-Scissors Fight
+            final_boss_fight(&data->current_hero);
+
+            // Check results
+            if (data->current_hero.life_points > 0) {
+                // Victory logic is handled inside final_boss_fight (text), 
+                // here we just end the game loop.
+                game_running = false; 
+            } else {
+                // Defeat logic
+                printf("You have been defeated by the Dark Lord.\n");
+                // Apply death penalty
+                data->current_hero.life_points = 1;
+                data->current_hero.coins = 0;
+            }
+            press_enter_to_continue();
+            
+            // Skip the standard dungeon generation below
+            continue; 
+        }
+
+        // ==========================================================
+        // STANDARD DUNGEON LOGIC (Swamp, Mansion, Cave)
+        // ==========================================================
+
+        // Generate the procedural dungeon
+        Dungeon current_dungeon = create_dungeon(m_type);
 
         printf("\n--- MISSION START: %d ---\n", mission_id);
         press_enter_to_continue();
@@ -73,7 +121,7 @@ void run_game_loop(GameData *data){
             
             process_current_room(&current_dungeon, &data->current_hero, current_status);
 
-            // Check Game Over
+            // Check for Hero Death
             if(is_hero_dead(&data->current_hero)) {
                 printf("\n\n=== GAME OVER ===\n");
                 printf("Your hero has fallen.\n");
@@ -95,7 +143,8 @@ void run_game_loop(GameData *data){
             printf("\n--- DUNGEON CLEARED ---\n");
             printf("You return to the village safely.\n");
             
-            if(m_type == MISSION_SWAMP || m_type == MISSION_MANSION){
+            // If the hero survived the forced encounters, the mission is complete
+            if(m_type == MISSION_SWAMP || m_type == MISSION_MANSION || m_type == MISSION_CAVE){
                 current_status->is_completed = true;
             }
             
