@@ -1,6 +1,5 @@
 # Legend of the Lost Code
 
-**Author:** Fernando 908697  
 **Course Project:** RPG Game in C
 
 ## Description
