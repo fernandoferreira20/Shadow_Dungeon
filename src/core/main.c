@@ -1,5 +1,6 @@
 /**
  * @file main.c
+ * @author Harshit 908571
  * @brief Entry point of the RPG Project
  */
 

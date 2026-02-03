@@ -1,5 +1,6 @@
 /**
  * @file game_engine.c
+ * @author Harshit 908571
  * @brief Initialize a new game state and runs the logic
  */
 

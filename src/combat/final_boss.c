@@ -1,5 +1,6 @@
 /**
  * @file final_boss.c
+ * @author Alexandru 907625
  * @brief Implementation of the Dark Lord fight and Padovan Sequence
  */
 

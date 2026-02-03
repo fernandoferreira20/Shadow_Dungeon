@@ -1,5 +1,6 @@
 /**
  * @file combat.c
+ * @author Alexandru 907625
  * @brief Implementation of standard combat and trap logic
  */
 
