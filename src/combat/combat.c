@@ -6,9 +6,29 @@
 
 #include <stdio.h>
 #include "combat.h"
-#include "final_boss.h" // We will create this file in the next step!
+#include "final_boss.h" 
 #include "utils/random.h"
 #include "utils/utils.h"
+#include "menus/menus.h" 
+
+// helper function to draw the combat HUB
+void print_combat_hub(const Hero *hero, const Enemy *enemy){
+    clear_screen();
+    // Replaced manual lines with the consistent divider style
+    print_divider();
+    printf(BOLD_RED "   ⚔️  COMBAT: Hero vs %s  ⚔️" COLOR_RESET "\n", enemy->name);
+    print_divider();
+    
+    printf(" HERO HP: [");
+    // Visual Health Bar: Bold Green '#' for health, dimmed Red '-' for missing health
+    for(int i=0; i<MAX_LIFE; i++) {
+        if(i < hero->life_points) printf(BOLD_GREEN "#" COLOR_RESET);
+        else printf(BOLD_RED "-" COLOR_RESET);
+    }
+    printf("] " BOLD_WHITE "%d/%d" COLOR_RESET "\n", hero->life_points, MAX_LIFE);
+    print_divider();
+    printf("\n");
+}
 
 int hero_attack_roll(const Hero *hero){
     int roll = roll_die();
@@ -17,27 +37,33 @@ int hero_attack_roll(const Hero *hero){
     if(hero->has_sword) bonus = 1;
     if(hero->has_hero_sword) bonus = 2;
 
-    printf("You rolled %d (Bonus +%d) = Attack %d\n", roll, bonus, roll + bonus);
+    printf(" You rolled " BOLD_WHITE "[%d]" COLOR_RESET " (Bonus +%d) = " BOLD_CYAN "Attack Power %d" COLOR_RESET "\n", roll, bonus, roll + bonus);
     return roll + bonus;
 }
 
 void apply_trap_effect(Hero *hero, const Enemy *trap){
-    printf("\n!!! TRAP !!!\n");
-    printf("You triggered: %s\n", trap->name);
+    clear_screen(); 
+    print_divider();
+    printf(BOLD_RED "       !!! TRAP TRIGGERED !!!       " COLOR_RESET "\n");
+    print_divider();
+    
+    printf(" You stumbled into: " BOLD_YELLOW "%s" COLOR_RESET "\n\n", trap->name);
 
     if(trap->fatal_strike_req == 999){
         // Special logic for "Unsafe Bridge" type traps
-        printf("The environment is unstable! Flipping a coin...\n");
+        printf(" The environment is unstable! Flipping a coin...\n");
+        press_enter_to_continue();
+        
         if(flip_coin()){ // 1 = Heads
-            printf("Heads! You cross safely and find some loot!\n");
+            printf(" " BOLD_GREEN "Heads! You cross safely and find some loot!" COLOR_RESET "\n");
             hero->coins += trap->coins_reward;
         } else { // 0 = Tails
-            printf("Tails! You slip and take damage!\n");
+            printf(" " BOLD_RED "Tails! You slip and take damage!" COLOR_RESET "\n");
             hero->life_points -= trap->damage_inflicted;
         }
     } else {
         // Standard damage trap
-        printf("You take %d damage!\n", trap->damage_inflicted);
+        printf(" You take " BOLD_RED "%d damage!" COLOR_RESET "\n", trap->damage_inflicted);
         hero->life_points -= trap->damage_inflicted;
     }
     
@@ -48,38 +74,41 @@ void apply_trap_effect(Hero *hero, const Enemy *trap){
 }
 
 void fight_enemy(Hero *hero, Enemy *enemy, MissionStatus *status){
-    printf("\n--- FIGHT STARTED: Hero vs %s ---\n", enemy->name);
-
     // --- Special Boss Logic: Ancient Dragon ---
     if(enemy->type == ANCIENT_DRAGON){
-        int mystery_num = get_random_in_range(1, 100); // 1-100 is easier for mental math
-        printf("The Dragon roars! 'Does the number %d belong to the Padovan sequence?'\n", mystery_num);
-        int ans = get_int_input("1. Yes\n0. No\n> ", 0, 1);
+        clear_screen();
+        print_header(BOLD_RED "THE ANCIENT DRAGON AWAKENS..." COLOR_RESET);
+        
+        int mystery_num = get_random_in_range(1, 100);
+        printf(BOLD_YELLOW "The Dragon roars!" COLOR_RESET " 'Does the number " BOLD_WHITE "%d" COLOR_RESET " belong to the Padovan sequence?'\n", mystery_num);
+        int ans = get_int_input(BOLD_CYAN "1. Yes\n0. No\n> " COLOR_RESET, 0, 1);
 
-        // We assume is_padovan() exists in final_boss.h
         bool is_correct = (ans == is_padovan(mystery_num)); 
         
         if(is_correct){
-            printf("Correct! The Dragon is stunned and deals 0 damage this fight!\n");
+            printf("\n" BOLD_GREEN "Correct! The Dragon is stunned and deals 0 damage this fight!" COLOR_RESET "\n");
             enemy->damage_inflicted = 0;
         } else {
-            printf("Wrong! The Dragon breathes fire!\n");
+            printf("\n" BOLD_RED "Wrong! The Dragon breathes fire!" COLOR_RESET "\n");
         }
+        press_enter_to_continue();
     }
 
     // --- Main Combat Loop ---
-    // We fight as long as hero is alive AND the enemy isn't a trap (fatal_req < 100)
     while (hero->life_points > 0) {
         
+        // DRAW THE INTERFACE
+        print_combat_hub(hero, enemy);
+
         // 1. Hero Attacks
-        printf("\n[Your Turn]\n");
+        printf(BOLD_WHITE " [ Your Turn ]" COLOR_RESET "\n");
         int attack = hero_attack_roll(hero);
 
         // 2. Check Victory
         if(attack >= enemy->fatal_strike_req){
-            printf("*** VICTORY! ***\n");
-            printf("You defeated the %s!\n", enemy->name);
-            printf("Loot: %d coins.\n", enemy->coins_reward);
+            printf("\n" BOLD_GREEN " *** VICTORY! *** " COLOR_RESET "\n");
+            printf(" You defeated the %s!\n", enemy->name);
+            printf(" Loot: " BOLD_YELLOW "%d coins." COLOR_RESET "\n", enemy->coins_reward);
             hero->coins += enemy->coins_reward;
 
             // Update Mission Progress
@@ -88,38 +117,42 @@ void fight_enemy(Hero *hero, Enemy *enemy, MissionStatus *status){
             
             // Key Drop
             if(enemy->type == GUARDIAN_DEMON && !hero->has_key){
-                printf(">>> You found the CASTLE KEY! <<<\n");
+                printf("\n >>> You found the " BOLD_MAGENTA "CASTLE KEY!" COLOR_RESET " <<<\n");
                 hero->has_key = true;
                 status->key_recovered = true;
             }
 
             // Sword Drop
             if(enemy->type == ANCIENT_DRAGON && !hero->has_hero_sword){
-                printf(">>> You claimed the HERO SWORD! <<<\n");
+                printf("\n >>> You claimed the " BOLD_MAGENTA "HERO SWORD!" COLOR_RESET " <<<\n");
                 hero->has_hero_sword = true;
                 status->sword_recovered = true;
                 status->is_completed = true;
             }
-
-            break; // Exit fight loop
+            
+            press_enter_to_continue(); 
+            break; 
         } 
         
         // 3. Enemy Attacks (if hero missed)
-        printf("Missed! (You needed %d)\n", enemy->fatal_strike_req);
-        printf("[Enemy Turn]\n");
+        printf(BOLD_RED " Missed!" COLOR_RESET " (You needed %d)\n", enemy->fatal_strike_req);
+        printf("\n" BOLD_WHITE " [ Enemy Turn ]" COLOR_RESET "\n");
         
         // Armor reduction
         int dmg = enemy->damage_inflicted;
-        if(hero->has_armor && dmg > 0) dmg--;
+        if(hero->has_armor && dmg > 0) {
+            dmg--;
+            printf(" (Armor blocked 1 damage)\n");
+        }
 
-        printf("The %s attacks! You take %d damage.\n", enemy->name, dmg);
+        printf(" The %s attacks! You take " BOLD_RED "%d damage." COLOR_RESET "\n", enemy->name, dmg);
         hero->life_points -= dmg;
         
         if(hero->life_points < 0) hero->life_points = 0;
-        printf("Hero HP: %d/%d\n", hero->life_points, MAX_LIFE);
 
         if(hero->life_points == 0) {
-            printf("... You have fallen in battle ...\n");
+            printf("\n" BOLD_RED "... You have fallen in battle ..." COLOR_RESET "\n");
+            press_enter_to_continue();
             break;
         }
 

@@ -6,6 +6,7 @@
 
 #include "missions.h"
 #include "utils/utils.h" 
+#include "menus/menus.h" 
 #include <stdio.h>
 
 void initialize_missions(MissionStatus missions[4]){
@@ -21,10 +22,17 @@ void initialize_missions(MissionStatus missions[4]){
 
 int select_mission(const GameData *data){
     
-    printf("\n--- MISSION SELECTION ---\n");
-    printf("1. Rotting Swamp %s\n", data->missions[0].is_completed ? "[COMPLETED]" : "");
-    printf("2. Haunted Mansion %s\n", data->missions[1].is_completed ? "[COMPLETED]" : "");
-    printf("3. Crystal Cave %s\n", data->missions[2].is_completed ? "[COMPLETED]" : "");
+    print_header("MISSION SELECTION");
+    
+    // Using ternary operators inside printf for color coding
+    printf(BOLD_WHITE " [1]" COLOR_RESET " Rotting Swamp    %s\n", 
+           data->missions[0].is_completed ? BOLD_GREEN "[COMPLETED]" COLOR_RESET : "");
+           
+    printf(BOLD_WHITE " [2]" COLOR_RESET " Haunted Mansion  %s\n", 
+           data->missions[1].is_completed ? BOLD_GREEN "[COMPLETED]" COLOR_RESET : "");
+           
+    printf(BOLD_WHITE " [3]" COLOR_RESET " Crystal Cave     %s\n", 
+           data->missions[2].is_completed ? BOLD_GREEN "[COMPLETED]" COLOR_RESET : "");
 
     // Logic: Only show final boss if previous 3 are done
     bool all_completed = data->missions[0].is_completed && 
@@ -32,14 +40,15 @@ int select_mission(const GameData *data){
                          data->missions[2].is_completed;
 
     if(all_completed){
-        printf("4. The Dark Lord's Castle\n");
+        print_divider();
+        printf(BOLD_WHITE " [4]" COLOR_RESET BOLD_MAGENTA " The Dark Lord's Castle" COLOR_RESET "\n");
     }
 
-    printf("0. Back / Cancel\n");
+    print_divider();
+    printf(BOLD_WHITE " [0]" COLOR_RESET " Back / Cancel\n");
 
     int max_choice = all_completed ? 4 : 3;
     
-    // CORRECTION HERE: We declare 'choice' here for the first time
     int choice = get_int_input("Choose your destination: ", 0, max_choice);
 
     return choice; 

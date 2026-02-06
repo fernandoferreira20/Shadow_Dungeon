@@ -9,30 +9,28 @@
  #include "utils/utils.h"
  #include "items/inventory.h"
  #include "items/shop.h"
+ #include "menus/menus.h" // Added to access print_header/divider
 
  bool return_to_village(Hero *hero, const MissionStatus *status){
-    //check the mission criteria
     bool criteria_met = false;
 
-    //Rotting Swamp: Defeat 3 Orc Generals
     if(status->type == MISSION_SWAMP && status->progress_counter >= 3) criteria_met = true;
-    //Haunted Mansion: Recover Key and Defeat the Vampire
     else if(status->type == MISSION_MANSION) {
         if(status->is_completed && status->key_recovered) criteria_met = true;
     }
-    //Crystal Cave: Recover Hero's Sword
     else if (status->type == MISSION_CAVE){
         if(status->sword_recovered) criteria_met = true;
     }
 
-    //When the mission is successful
     if(criteria_met){
-        printf("Mission Criteria Met! Returning to village...\n");
+        // Victory! Make it Green and Bold.
+        printf(BOLD_GREEN "Mission Criteria Met! Returning to village...\n" COLOR_RESET);
         return true;
     }
 
-    //When the mission failed
-    printf("Mission incomplete. Pay %d to flee? (You have %d)\n", COST_TO_RETURN_VILLAGE, hero->coins);
+    // Failure / Retreat state
+    printf(BOLD_RED "Mission incomplete." COLOR_RESET " Pay " BOLD_YELLOW "%d" COLOR_RESET " to flee? (You have " BOLD_YELLOW "%d" COLOR_RESET ")\n", COST_TO_RETURN_VILLAGE, hero->coins);
+    
     if(status->type == MISSION_MANSION) printf("(Status: Vampire Dead? %s. Key found? %s)\n", status->is_completed ? "Yes":"No", status->key_recovered ? "Yes":"No");
     if(status->type == MISSION_SWAMP) printf("(Status: Generals Defeated: %d/3)\n", status->progress_counter);
 
@@ -41,10 +39,10 @@
     if(choice == 1){
         if(hero->coins >= COST_TO_RETURN_VILLAGE){
             hero->coins -= COST_TO_RETURN_VILLAGE;
-            printf("You paid the smugglers and escaped to the village.\n");
+            printf(BOLD_YELLOW "You paid the smugglers and escaped to the village.\n" COLOR_RESET);
             return true;
         } else {
-            printf("Not enough coins! You must fight on.\n");
+            printf(BOLD_RED "Not enough coins! You must fight on.\n" COLOR_RESET);
             return false;
         }
     }
@@ -55,34 +53,35 @@
     bool in_dungeon = true;
 
     while(in_dungeon && hero->life_points > 0){
-        printf("\n=== MISSION MENU ===\n");
-        printf("1. Explore Dungeon Room (%d/%d)\n", dungeon->current_room_index + 1, MAX_DUNGEON_ROOMS);
-        printf("2. Shop\n");
-        printf("3. Inventory\n");
-        printf("4. Return to Village\n");
+        print_header("MISSION MENU"); // Use the consistent header style
+        
+        // Highlight the progress counter so the player knows how far they are
+        printf(BOLD_WHITE " [1]" COLOR_RESET " Explore Dungeon Room (" BOLD_CYAN "%d/%d" COLOR_RESET ")\n", dungeon->current_room_index + 1, MAX_DUNGEON_ROOMS);
+        printf(BOLD_WHITE " [2]" COLOR_RESET " Shop\n");
+        printf(BOLD_WHITE " [3]" COLOR_RESET " Inventory\n");
+        printf(BOLD_WHITE " [4]" COLOR_RESET " Return to Village\n");
 
         int choice = get_int_input("Choose action: ", 1, 4);
 
         switch(choice){
-            case 1: //explore
+            case 1: 
             process_current_room(dungeon, hero, status);
             break;
-            case 2: //shop
+            case 2: 
             display_shop_menu(hero);
             break;
-            case 3: //inventory
+            case 3: 
             display_inventory(hero);
             break;
-            case 4: //return to village
+            case 4: 
             if(return_to_village(hero, status)){
                 in_dungeon = false;
             }
             break;
         }
 
-        //Force return check if dungeon ends
         if(dungeon->current_room_index >= MAX_DUNGEON_ROOMS && in_dungeon){
-            printf("End of dungeon reached. You must return to the village.\n");
+            printf(BOLD_CYAN "End of dungeon reached. You must return to the village.\n" COLOR_RESET);
             if(return_to_village(hero, status)) in_dungeon = false;
         }
     }

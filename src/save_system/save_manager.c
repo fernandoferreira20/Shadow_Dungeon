@@ -1,4 +1,4 @@
- /**
+/**
  * @file save_manager.c
  * @author Otajon 908553
  * @brief Save/load game state using linked list
@@ -8,10 +8,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
-#include <time.h> // Required for timestamp
+#include <time.h> 
 #include "save_manager.h"
-//#include "game_data.h" // Needed for create_save_data/load_game_data
 #include "game_types.h"
+#include "utils/utils.h" // Added for colors
 
 void save_game(GameData *data) {
     if(data == NULL){
@@ -21,7 +21,7 @@ void save_game(GameData *data) {
     /*Allocate memory for the new node*/
     SaveNode *new_save = (SaveNode*)malloc(sizeof(SaveNode));
     if(new_save == NULL){
-        printf("Error: Cannot allocate memory for save!\n");
+        printf(BOLD_RED "Error: Cannot allocate memory for save!\n" COLOR_RESET);
         return;
     }
 
@@ -50,7 +50,8 @@ void save_game(GameData *data) {
     new_save->next = data->save_list_head;
     data->save_list_head = new_save;
 
-    printf("Game saved succesfully at %s\n", new_save->data.date_time);
+    // Use Bold Green to make the player feel secure that their data is safe
+    printf(BOLD_GREEN "Game saved succesfully at %s\n" COLOR_RESET, new_save->data.date_time);
 }
 
 SaveNode* get_save_list(GameData *data) {

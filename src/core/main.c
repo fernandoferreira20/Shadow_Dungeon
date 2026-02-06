@@ -9,13 +9,14 @@
 #include "core/game_engine.h"
 #include "game_types.h"
 #include "menus/main_menu.h" 
+#include "utils/utils.h" 
 
 int main(void){
     // Allocate Memory
     GameData *data = (GameData*) malloc(sizeof(GameData));
 
     if (data == NULL) {
-        printf("Fatal Error: Could not allocate memory.\n");
+        printf(BOLD_RED "Fatal Error: Could not allocate memory.\n" COLOR_RESET);
         return 1;
     }
 
@@ -28,6 +29,6 @@ int main(void){
 
     // Cleanup
     free(data);
-    printf("Game exited cleanly.\n");
+    printf(BOLD_GREEN "Game exited cleanly.\n" COLOR_RESET);
     return 0;
 }

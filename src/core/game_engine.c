@@ -17,6 +17,7 @@
 #include "utils/utils.h"
 #include "entities/player.h"
 #include "combat/final_boss.h"
+#include "menus/menus.h" 
 
 void initialize_data(GameData *data){
     if(data == NULL) return;
@@ -56,7 +57,8 @@ void run_game_loop(GameData *data){
     srand((unsigned int)time(NULL));
     bool game_running = true;
 
-    printf("\n[System] Entering the world of Shadow Dungeon...\n");
+    // System messages get a tech-like Cyan color
+    printf(BOLD_CYAN "\n[System] Entering the world of Shadow Dungeon...\n" COLOR_RESET);
     
     // === THE MAIN GAME LOOP ===
     while(game_running) {
@@ -78,12 +80,12 @@ void run_game_loop(GameData *data){
         if (m_type == MISSION_CASTLE) {
             // Verify prerequisites (Must complete previous 3 missions)
             if(!data->missions[0].is_completed || !data->missions[1].is_completed || !data->missions[2].is_completed){
-                 printf("You cannot enter the castle yet! Complete all other missions first.\n");
+                 printf(BOLD_RED " [!] You cannot enter the castle yet! Complete all other missions first.\n" COLOR_RESET);
                  press_enter_to_continue();
                  continue;
             }
 
-            printf("\n--- APPROACHING THE DARK LORD'S CASTLE ---\n");
+            print_header(BOLD_RED "APPROACHING THE DARK LORD'S CASTLE" COLOR_RESET);
             press_enter_to_continue();
 
             // Trigger the Rock-Paper-Scissors Fight
@@ -96,7 +98,7 @@ void run_game_loop(GameData *data){
                 game_running = false; 
             } else {
                 // Defeat logic
-                printf("You have been defeated by the Dark Lord.\n");
+                printf(BOLD_RED " You have been defeated by the Dark Lord.\n" COLOR_RESET);
                 // Apply death penalty
                 data->current_hero.life_points = 1;
                 data->current_hero.coins = 0;
@@ -114,7 +116,11 @@ void run_game_loop(GameData *data){
         // Generate the procedural dungeon
         Dungeon current_dungeon = create_dungeon(m_type);
 
-        printf("\n--- MISSION START: %d ---\n", mission_id);
+        // Use the header style for consistency
+        char title_buf[50];
+        sprintf(title_buf, "MISSION START: %d", mission_id);
+        print_header(title_buf);
+        
         press_enter_to_continue();
 
         // 4. Dungeon Loop (Room by Room)
@@ -124,10 +130,10 @@ void run_game_loop(GameData *data){
 
             // Check for Hero Death
             if(is_hero_dead(&data->current_hero)) {
-                printf("\n\n=== GAME OVER ===\n");
-                printf("Your hero has fallen.\n");
-                printf("You are dragged back to the village by friendly travelers.\n");
-                printf("Cost: %d coins.\n", COST_TO_RETURN_VILLAGE);
+                print_header(BOLD_RED "GAME OVER" COLOR_RESET);
+                printf(BOLD_WHITE " Your hero has fallen.\n" COLOR_RESET);
+                printf(" You are dragged back to the village by friendly travelers.\n");
+                printf(" Cost: " BOLD_YELLOW "%d coins" COLOR_RESET ".\n", COST_TO_RETURN_VILLAGE);
                 
                 // Penalty
                 data->current_hero.life_points = 1; 
@@ -141,8 +147,8 @@ void run_game_loop(GameData *data){
 
         // 5. Mission Complete Check (End of Dungeon)
         if(current_dungeon.current_room_index >= MAX_DUNGEON_ROOMS) {
-            printf("\n--- DUNGEON CLEARED ---\n");
-            printf("You return to the village safely.\n");
+            print_header(BOLD_GREEN "DUNGEON CLEARED" COLOR_RESET);
+            printf(" You return to the village safely.\n");
             
             // If the hero survived the forced encounters, the mission is complete
             if(m_type == MISSION_SWAMP || m_type == MISSION_MANSION || m_type == MISSION_CAVE){
@@ -153,5 +159,5 @@ void run_game_loop(GameData *data){
         }
     }
 
-    printf("\n[System] Game application terminated. Goodbye!\n");
+    printf(BOLD_CYAN "\n[System] Game application terminated. Goodbye!\n" COLOR_RESET);
 }

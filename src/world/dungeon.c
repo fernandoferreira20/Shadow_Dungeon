@@ -1,4 +1,4 @@
- /**
+/**
  * @file dungeon.c
  * @author Alexandru 907625
  * @brief Procedural dungeon generation and room logic
@@ -11,6 +11,7 @@
  #include "combat/combat.h"
  #include "utils/utils.h"   
  #include "entities/player.h" 
+ #include "menus/menus.h" 
  
 static void setup_room(DungeonRoom *room, MissionType m_type, int roll){
     room->is_cleared = false;
@@ -74,7 +75,7 @@ static void setup_room(DungeonRoom *room, MissionType m_type, int roll){
     d.mission_type = type;
     d.current_room_index = 0;
 
-    printf("\nGenerating Dungeon (Type: %d)...\n", type);
+    printf(BOLD_MAGENTA "\nGenerating Dungeon (Type: %d)...\n" COLOR_RESET, type);
     for(int i = 0; i < MAX_DUNGEON_ROOMS; i++){
         setup_room(&d.rooms[i], type, roll_die());
     }
@@ -95,13 +96,16 @@ static void setup_room(DungeonRoom *room, MissionType m_type, int roll){
     if(dungeon->current_room_index >= MAX_DUNGEON_ROOMS) return;
 
     DungeonRoom *room = &dungeon->rooms[dungeon->current_room_index];
-    printf("\n--- Room %d / %d ---\n", dungeon->current_room_index + 1, MAX_DUNGEON_ROOMS);
+    
+    // Styled room header to show progression clearly
+    printf("\n" BOLD_CYAN "═══ [ Room %d / %d ] ═══" COLOR_RESET "\n", dungeon->current_room_index + 1, MAX_DUNGEON_ROOMS);
 
     if(room->type == ROOM_EMPTY) {
-        printf("The room is empty. A moment of silence.\n");
+        printf(BOLD_WHITE "The room is empty. A moment of silence.\n" COLOR_RESET);
         press_enter_to_continue();
     }
     else if(room->type == ROOM_TRAP) {
+        // The actual damage msg is inside apply_trap_effect, but we can color the context here if needed
         apply_trap_effect(hero, &room->content);
     }
     else if(room->type == ROOM_FIGHT) {
