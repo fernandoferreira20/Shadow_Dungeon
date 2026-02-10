@@ -1,10 +1,16 @@
-# Legend of the Lost Code
+# Shadow Dungeon
 
 **Course Project:** RPG Game in C
 
+## Authors
+Mihai Alexandru Savin
+Fernando Ferreira
+Otajon Yuldashev
+Harshit Soni
+
 ## Description
-Legend of the Lost Code is a console-based, turn-based RPG written in C.  
-The player explores different areas, fights enemies using dice-based mechanics, completes missions, manages inventory and gold, and ultimately faces the Dark Lord in a final battle.
+Shadow Dungeon is a RPG game written in C.  
+The player explores different areas, fights enemies using dice-based mechanics, completes missions, manages inventory and coins, and ultimately faces the Dark Lord in a final battle.
 
 ## Features
 - Procedural Generation: Dungeons are generated with enemies and traps.
