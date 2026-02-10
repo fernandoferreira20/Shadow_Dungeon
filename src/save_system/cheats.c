@@ -13,7 +13,7 @@
 #include "menus/menus.h" 
 
 // Key Sequence: W, W, S, S, A, D, A, D, B, A
-static const char konami_sequence[] = {'w', 'w', 's', 's', 'a', 'd', 'a', 'd', 'b', 'a'};
+static const char konami_sequence[] = {'w', 'w', 's', 's', 'a', 'd', 'a', 'd', 'b', 'a', ' '};
 static int konami_position = 0;
 
 void check_konami_code(GameData *data, char input) {
