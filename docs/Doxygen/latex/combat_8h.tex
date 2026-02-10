@@ -1,0 +1,104 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/combat/combat.h File Reference}
+\hypertarget{combat_8h}{}\label{combat_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/combat/combat.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/combat/combat.h}}
+
+
+Manages standard combat logic and trap interactions.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}entities/enemies.\+h"{}}\newline
+Include dependency graph for combat.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{combat_8h_a356eb557b33f23ff8f15a79879a71348}{hero\+\_\+attack\+\_\+roll}} (const \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero)
+\begin{DoxyCompactList}\small\item\em Calculates the hero\textquotesingle{}s attack power for a single turn. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8h_af855236118681ef2bfd365cc8c83a105}{fight\+\_\+enemy}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, \mbox{\hyperlink{structEnemy}{Enemy}} \texorpdfstring{$\ast$}{*}enemy, \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}status)
+\begin{DoxyCompactList}\small\item\em Executes a fight loop between \doxylink{structHero}{Hero} and \doxylink{structEnemy}{Enemy}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{combat_8h_a1f0e1d27849a049cd5b13fe0dd0049ba}{apply\+\_\+trap\+\_\+effect}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, const \mbox{\hyperlink{structEnemy}{Enemy}} \texorpdfstring{$\ast$}{*}trap)
+\begin{DoxyCompactList}\small\item\em Applies the effect of a trap room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages standard combat logic and trap interactions. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{combat_8h_a1f0e1d27849a049cd5b13fe0dd0049ba}\label{combat_8h_a1f0e1d27849a049cd5b13fe0dd0049ba} 
+\index{combat.h@{combat.h}!apply\_trap\_effect@{apply\_trap\_effect}}
+\index{apply\_trap\_effect@{apply\_trap\_effect}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{apply\_trap\_effect()}{apply\_trap\_effect()}}
+{\footnotesize\ttfamily void apply\+\_\+trap\+\_\+effect (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{const \mbox{\hyperlink{structEnemy}{Enemy}} \texorpdfstring{$\ast$}{*}}]{trap }\end{DoxyParamCaption})}
+
+
+
+Applies the effect of a trap room. 
+
+
+\begin{DoxyItemize}
+\item Logic varies by trap 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to hero \\
+\hline
+{\em trap} & Pointer to the enemy \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{combat_8h_af855236118681ef2bfd365cc8c83a105}\label{combat_8h_af855236118681ef2bfd365cc8c83a105} 
+\index{combat.h@{combat.h}!fight\_enemy@{fight\_enemy}}
+\index{fight\_enemy@{fight\_enemy}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{fight\_enemy()}{fight\_enemy()}}
+{\footnotesize\ttfamily void fight\+\_\+enemy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{\mbox{\hyperlink{structEnemy}{Enemy}} \texorpdfstring{$\ast$}{*}}]{enemy,  }\item[{\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}}]{status }\end{DoxyParamCaption})}
+
+
+
+Executes a fight loop between \doxylink{structHero}{Hero} and \doxylink{structEnemy}{Enemy}. 
+
+
+\begin{DoxyItemize}
+\item Logic\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item While both are alive\+:
+\item \doxylink{structHero}{Hero} attacks (calls hero\+\_\+attack\+\_\+roll)
+\item If Attack \texorpdfstring{$>$}{>} \doxylink{structEnemy}{Enemy} Fatal Strike\+: \doxylink{structEnemy}{Enemy} dies, \doxylink{structHero}{Hero} gets coins
+\item Else\+: \doxylink{structHero}{Hero} takes \doxylink{structEnemy}{Enemy} Damage
+\item Updates \doxylink{structMissionStatus}{Mission\+Status} if a goal enemy is defeated 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the hero \\
+\hline
+{\em enemy} & Pointer to the enemy being fought \\
+\hline
+{\em status} & Pointer to mission status (to increment kill counts) \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyEnumerate}\Hypertarget{combat_8h_a356eb557b33f23ff8f15a79879a71348}\label{combat_8h_a356eb557b33f23ff8f15a79879a71348} 
+\index{combat.h@{combat.h}!hero\_attack\_roll@{hero\_attack\_roll}}
+\index{hero\_attack\_roll@{hero\_attack\_roll}!combat.h@{combat.h}}
+\doxysubsubsection{\texorpdfstring{hero\_attack\_roll()}{hero\_attack\_roll()}}
+{\footnotesize\ttfamily int hero\+\_\+attack\+\_\+roll (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero }\end{DoxyParamCaption})}
+
+
+
+Calculates the hero\textquotesingle{}s attack power for a single turn. 
+
+
+\begin{DoxyItemize}
+\item Logic\+: Roll die + bonuses
+\item Bonues\+:
+\item +1 if Sword is equipped
+\item +2 if \doxylink{structHero}{Hero} Sword is equipped 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to hero \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The total attack value 
+\end{DoxyReturn}
+
+\end{DoxyItemize}

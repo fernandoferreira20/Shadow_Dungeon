@@ -1,0 +1,73 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/items/shop.h File Reference}
+\hypertarget{shop_8h}{}\label{shop_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/items/shop.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/items/shop.h}}
+
+
+Manages the in-\/game shop.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+Include dependency graph for shop.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{shop_8h_a5a91b6abe2c1e792d053fd21afe8c599}{display\+\_\+shop\+\_\+menu}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero)
+\begin{DoxyCompactList}\small\item\em Displays the Shop Menu and handles purchases. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{shop_8h_a2cfb02ad34c38ee48ba4d6ed9225b3e5}{purschase\+\_\+item}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}} item)
+\begin{DoxyCompactList}\small\item\em Processes the purchase of a specific item. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the in-\/game shop. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{shop_8h_a5a91b6abe2c1e792d053fd21afe8c599}\label{shop_8h_a5a91b6abe2c1e792d053fd21afe8c599} 
+\index{shop.h@{shop.h}!display\_shop\_menu@{display\_shop\_menu}}
+\index{display\_shop\_menu@{display\_shop\_menu}!shop.h@{shop.h}}
+\doxysubsubsection{\texorpdfstring{display\_shop\_menu()}{display\_shop\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+shop\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero }\end{DoxyParamCaption})}
+
+
+
+Displays the Shop Menu and handles purchases. 
+
+
+\begin{DoxyItemize}
+\item Items available\+:
+\item Health potion (4 coins)
+\item Sword (5 coins, +1 Attack, one-\/time buy)
+\item Armor (10 coins, -\/1 Damage, one-\/time buy) 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the \doxylink{structHero}{Hero} structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{shop_8h_a2cfb02ad34c38ee48ba4d6ed9225b3e5}\label{shop_8h_a2cfb02ad34c38ee48ba4d6ed9225b3e5} 
+\index{shop.h@{shop.h}!purschase\_item@{purschase\_item}}
+\index{purschase\_item@{purschase\_item}!shop.h@{shop.h}}
+\doxysubsubsection{\texorpdfstring{purschase\_item()}{purschase\_item()}}
+{\footnotesize\ttfamily void purschase\+\_\+item (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{\mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}}}]{item }\end{DoxyParamCaption})}
+
+
+
+Processes the purchase of a specific item. 
+
+
+\begin{DoxyItemize}
+\item Logic behind this process
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Checks if the player has enough coins and if the item is already owned
+\item Deducts coins and updated the inventory if they process is successful 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the \doxylink{structHero}{Hero} structure \\
+\hline
+{\em item} & The type of item to purchase \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyEnumerate}

@@ -1,0 +1,11 @@
+digraph "/mnt/c/Users/alexa/Desktop/Shadow_Dungeon/Shadow_Dungeon/assets"
+{
+ // LATEX_PDF_SIZE
+  bgcolor="transparent";
+  edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
+  node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
+  compound=true
+  dir_34e9a5f624ac092a9ae2401c28d616d7 [label="assets", fillcolor="#edf0f7", color="grey25", style="filled,bold", URL="dir_34e9a5f624ac092a9ae2401c28d616d7.html",tooltip=""];
+  dir_d44c64559bbebec7f509842c48db8b23 [label="include", fillcolor="#edf0f7", color="grey25", style="filled", URL="dir_d44c64559bbebec7f509842c48db8b23.html",tooltip=""];
+  dir_34e9a5f624ac092a9ae2401c28d616d7->dir_d44c64559bbebec7f509842c48db8b23 [headlabel="1", labeldistance=1.5 headhref="dir_000000_000004.html" href="dir_000000_000004.html" color="steelblue1" fontcolor="steelblue1"];
+}

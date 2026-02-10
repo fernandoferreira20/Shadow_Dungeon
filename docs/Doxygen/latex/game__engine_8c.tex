@@ -1,0 +1,77 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/core/game\+\_\+engine.c File Reference}
+\hypertarget{game__engine_8c}{}\label{game__engine_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/core/game\_engine.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/core/game\_engine.c}}
+
+
+Initialize a new game state and runs the logic.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}game\+\_\+engine.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}world/village.\+h"{}}\newline
+{\ttfamily \#include "{}world/dungeon.\+h"{}}\newline
+{\ttfamily \#include "{}utils/utils.\+h"{}}\newline
+{\ttfamily \#include "{}entities/player.\+h"{}}\newline
+{\ttfamily \#include "{}combat/final\+\_\+boss.\+h"{}}\newline
+{\ttfamily \#include "{}menus/menus.\+h"{}}\newline
+Include dependency graph for game\+\_\+engine.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__engine_8c_ac38281a3c79c8884900c980ff522fe3d}{initialize\+\_\+data}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Initialize a new game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{game__engine_8c_ae167512da62d3c8a3566bb74d7c2856b}{run\+\_\+game\+\_\+loop}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em The main execution of the game loop. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Initialize a new game state and runs the logic. 
+
+\begin{DoxyAuthor}{Author}
+Harshit 908571 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__engine_8c_ac38281a3c79c8884900c980ff522fe3d}\label{game__engine_8c_ac38281a3c79c8884900c980ff522fe3d} 
+\index{game\_engine.c@{game\_engine.c}!initialize\_data@{initialize\_data}}
+\index{initialize\_data@{initialize\_data}!game\_engine.c@{game\_engine.c}}
+\doxysubsubsection{\texorpdfstring{initialize\_data()}{initialize\_data()}}
+{\footnotesize\ttfamily void initialize\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Initialize a new game. 
+
+
+\begin{DoxyItemize}
+\item Sets hero to 20 life points, 0 coins, resets missions, and prepares the game data 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the main \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{game__engine_8c_ae167512da62d3c8a3566bb74d7c2856b}\label{game__engine_8c_ae167512da62d3c8a3566bb74d7c2856b} 
+\index{game\_engine.c@{game\_engine.c}!run\_game\_loop@{run\_game\_loop}}
+\index{run\_game\_loop@{run\_game\_loop}!game\_engine.c@{game\_engine.c}}
+\doxysubsubsection{\texorpdfstring{run\_game\_loop()}{run\_game\_loop()}}
+{\footnotesize\ttfamily void run\+\_\+game\+\_\+loop (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+The main execution of the game loop. 
+
+
+\begin{DoxyItemize}
+\item Handles the transition between the Village, Missions and Menus 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the active Gama\+Data structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}

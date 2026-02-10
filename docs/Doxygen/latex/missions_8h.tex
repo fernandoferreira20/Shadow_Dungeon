@@ -1,0 +1,77 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/world/missions.h File Reference}
+\hypertarget{missions_8h}{}\label{missions_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/missions.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/missions.h}}
+
+
+Managing mission selection and tracking the progress.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+Include dependency graph for missions.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{missions_8h_a62e08ef0950bacb7748ba1da0933207f}{initialize\+\_\+missions}} (\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} missions\mbox{[}4\mbox{]})
+\begin{DoxyCompactList}\small\item\em Initialize the standard missions in the \doxylink{structGameData}{Game\+Data}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{missions_8h_a51b1a445583af4e4a0206151183c6d70}{select\+\_\+mission}} (const \mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Display the Menu to select the missions. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{missions_8h_a585247b74e4945b7d28fbfbafa723d74}{mark\+\_\+mission\+\_\+complete}} (\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}mission)
+\begin{DoxyCompactList}\small\item\em Mark a mission as completed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Managing mission selection and tracking the progress. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{missions_8h_a62e08ef0950bacb7748ba1da0933207f}\label{missions_8h_a62e08ef0950bacb7748ba1da0933207f} 
+\index{missions.h@{missions.h}!initialize\_missions@{initialize\_missions}}
+\index{initialize\_missions@{initialize\_missions}!missions.h@{missions.h}}
+\doxysubsubsection{\texorpdfstring{initialize\_missions()}{initialize\_missions()}}
+{\footnotesize\ttfamily void initialize\+\_\+missions (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMissionStatus}{Mission\+Status}}}]{missions\mbox{[}4\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Initialize the standard missions in the \doxylink{structGameData}{Game\+Data}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em missions} & Array of \doxylink{structMissionStatus}{Mission\+Status} to initialize \\
+\hline
+\end{DoxyParams}
+\Hypertarget{missions_8h_a585247b74e4945b7d28fbfbafa723d74}\label{missions_8h_a585247b74e4945b7d28fbfbafa723d74} 
+\index{missions.h@{missions.h}!mark\_mission\_complete@{mark\_mission\_complete}}
+\index{mark\_mission\_complete@{mark\_mission\_complete}!missions.h@{missions.h}}
+\doxysubsubsection{\texorpdfstring{mark\_mission\_complete()}{mark\_mission\_complete()}}
+{\footnotesize\ttfamily void mark\+\_\+mission\+\_\+complete (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}}]{mission }\end{DoxyParamCaption})}
+
+
+
+Mark a mission as completed. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mission} & Pointer to the specific \doxylink{structMissionStatus}{Mission\+Status} to update \\
+\hline
+\end{DoxyParams}
+\Hypertarget{missions_8h_a51b1a445583af4e4a0206151183c6d70}\label{missions_8h_a51b1a445583af4e4a0206151183c6d70} 
+\index{missions.h@{missions.h}!select\_mission@{select\_mission}}
+\index{select\_mission@{select\_mission}!missions.h@{missions.h}}
+\doxysubsubsection{\texorpdfstring{select\_mission()}{select\_mission()}}
+{\footnotesize\ttfamily int select\+\_\+mission (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Display the Menu to select the missions. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to \doxylink{structGameData}{Game\+Data} to check completion status \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The selected mission index (or 0 to cancel) 
+\end{DoxyReturn}

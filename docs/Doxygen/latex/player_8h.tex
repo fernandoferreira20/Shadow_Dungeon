@@ -1,0 +1,82 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/entities/player.h File Reference}
+\hypertarget{player_8h}{}\label{player_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/entities/player.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/entities/player.h}}
+
+
+Functions for managing the \doxylink{structHero}{Hero}.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+Include dependency graph for player.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structHero}{Hero}} \mbox{\hyperlink{player_8h_acd1101ba8ddff9a890a04a57f50192e3}{create\+\_\+hero}} ()
+\begin{DoxyCompactList}\small\item\em Creates a new \doxylink{structHero}{Hero} with starting stats. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{player_8h_a0d8e35194ac2ef1e3fe5f4921460b5bb}{update\+\_\+hero\+\_\+stats}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, int life\+\_\+delta, int coin\+\_\+delta)
+\begin{DoxyCompactList}\small\item\em Updates the \doxylink{structHero}{Hero}\textquotesingle{}s stats We make sure that the Life Points don\textquotesingle{}t go below 0 and above 20 Handling adding/removing coins. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{player_8h_a7e46abae4cd698b7b127f99e0b44e565}{is\+\_\+hero\+\_\+dead}} (const \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero)
+\begin{DoxyCompactList}\small\item\em Checks if the \doxylink{structHero}{Hero} has been defeated. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for managing the \doxylink{structHero}{Hero}. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{player_8h_acd1101ba8ddff9a890a04a57f50192e3}\label{player_8h_acd1101ba8ddff9a890a04a57f50192e3} 
+\index{player.h@{player.h}!create\_hero@{create\_hero}}
+\index{create\_hero@{create\_hero}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{create\_hero()}{create\_hero()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structHero}{Hero}} create\+\_\+hero (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new \doxylink{structHero}{Hero} with starting stats. 
+
+
+\begin{DoxyItemize}
+\item Default\+: 20 Life Points, 0 Coins, 0 Items \begin{DoxyReturn}{Returns}
+A capitalized \doxylink{structHero}{Hero} structure 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{player_8h_a7e46abae4cd698b7b127f99e0b44e565}\label{player_8h_a7e46abae4cd698b7b127f99e0b44e565} 
+\index{player.h@{player.h}!is\_hero\_dead@{is\_hero\_dead}}
+\index{is\_hero\_dead@{is\_hero\_dead}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{is\_hero\_dead()}{is\_hero\_dead()}}
+{\footnotesize\ttfamily bool is\+\_\+hero\+\_\+dead (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero }\end{DoxyParamCaption})}
+
+
+
+Checks if the \doxylink{structHero}{Hero} has been defeated. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the \doxylink{structHero}{Hero} structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if life\+\_\+points \texorpdfstring{$<$}{<}= 0, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{player_8h_a0d8e35194ac2ef1e3fe5f4921460b5bb}\label{player_8h_a0d8e35194ac2ef1e3fe5f4921460b5bb} 
+\index{player.h@{player.h}!update\_hero\_stats@{update\_hero\_stats}}
+\index{update\_hero\_stats@{update\_hero\_stats}!player.h@{player.h}}
+\doxysubsubsection{\texorpdfstring{update\_hero\_stats()}{update\_hero\_stats()}}
+{\footnotesize\ttfamily void update\+\_\+hero\+\_\+stats (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{int}]{life\+\_\+delta,  }\item[{int}]{coin\+\_\+delta }\end{DoxyParamCaption})}
+
+
+
+Updates the \doxylink{structHero}{Hero}\textquotesingle{}s stats We make sure that the Life Points don\textquotesingle{}t go below 0 and above 20 Handling adding/removing coins. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the \doxylink{structHero}{Hero} structure \\
+\hline
+{\em life\+\_\+delta} & Change in life points (+ to heal, -\/ to damage) \\
+\hline
+{\em coin\+\_\+delta} & Change in coins (+ to add, -\/ to remove) \\
+\hline
+\end{DoxyParams}

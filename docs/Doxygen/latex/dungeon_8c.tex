@@ -1,0 +1,86 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/world/dungeon.c File Reference}
+\hypertarget{dungeon_8c}{}\label{dungeon_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/dungeon.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/dungeon.c}}
+
+
+Procedural dungeon generation and room logic.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}dungeon.\+h"{}}\newline
+{\ttfamily \#include "{}utils/random.\+h"{}}\newline
+{\ttfamily \#include "{}combat/combat.\+h"{}}\newline
+{\ttfamily \#include "{}utils/utils.\+h"{}}\newline
+{\ttfamily \#include "{}entities/player.\+h"{}}\newline
+{\ttfamily \#include "{}menus/menus.\+h"{}}\newline
+Include dependency graph for dungeon.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structDungeon}{Dungeon}} \mbox{\hyperlink{dungeon_8c_a5d7eb2309d5e140d64316ae566845714}{create\+\_\+dungeon}} (\mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{Mission\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Generates a new procedural dungeon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dungeon_8c_ab5fa2f792fa6e8ccf0e8850956672ec9}{process\+\_\+current\+\_\+room}} (\mbox{\hyperlink{structDungeon}{Dungeon}} \texorpdfstring{$\ast$}{*}dungeon, \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}status)
+\begin{DoxyCompactList}\small\item\em Procces the logic for the current room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Procedural dungeon generation and room logic. 
+
+\begin{DoxyAuthor}{Author}
+Alexandru 907625 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{dungeon_8c_a5d7eb2309d5e140d64316ae566845714}\label{dungeon_8c_a5d7eb2309d5e140d64316ae566845714} 
+\index{dungeon.c@{dungeon.c}!create\_dungeon@{create\_dungeon}}
+\index{create\_dungeon@{create\_dungeon}!dungeon.c@{dungeon.c}}
+\doxysubsubsection{\texorpdfstring{create\_dungeon()}{create\_dungeon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDungeon}{Dungeon}} create\+\_\+dungeon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{Mission\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Generates a new procedural dungeon. 
+
+
+\begin{DoxyItemize}
+\item Algorithm\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Iterates from 0 to MAX\+\_\+\+DUNGEON\+\_\+\+ROOMS
+\item Rolls a die for each room based on the Mission Table
+\item Forces Mission Goals if they haven\textquotesingle{}t appeared by room 7 
+\begin{DoxyParams}{Parameters}
+{\em type} & The mission type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A fully populated dungeon structure 
+\end{DoxyReturn}
+
+\end{DoxyEnumerate}\Hypertarget{dungeon_8c_ab5fa2f792fa6e8ccf0e8850956672ec9}\label{dungeon_8c_ab5fa2f792fa6e8ccf0e8850956672ec9} 
+\index{dungeon.c@{dungeon.c}!process\_current\_room@{process\_current\_room}}
+\index{process\_current\_room@{process\_current\_room}!dungeon.c@{dungeon.c}}
+\doxysubsubsection{\texorpdfstring{process\_current\_room()}{process\_current\_room()}}
+{\footnotesize\ttfamily void process\+\_\+current\+\_\+room (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDungeon}{Dungeon}} \texorpdfstring{$\ast$}{*}}]{dungeon,  }\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}}]{status }\end{DoxyParamCaption})}
+
+
+
+Procces the logic for the current room. 
+
+
+\begin{DoxyItemize}
+\item If there is a ROOM\+\_\+\+FIGHT call the combat system
+\item If there is a ROOM\+\_\+\+TRAP applies the trap damage
+\item If there is a ROOM\+\_\+\+EMPTY prints message 
+\begin{DoxyParams}{Parameters}
+{\em dungeon} & Pointer to the active dungeon \\
+\hline
+{\em hero} & Pointer to the hero \\
+\hline
+{\em status} & Pointer to the \doxylink{structMissionStatus}{Mission\+Status} \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}

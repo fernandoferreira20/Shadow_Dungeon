@@ -1,0 +1,86 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/utils/utils.c File Reference}
+\hypertarget{utils_8c}{}\label{utils_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/utils/utils.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/utils/utils.c}}
+
+
+Implementation of general utility functions for valid inputs.  
+
+
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for utils.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{utils_8c_a4953d1edcbbfc7e420c423ded1d5621a}{clear\+\_\+screen}} ()
+\begin{DoxyCompactList}\small\item\em Clear the console screen. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_a569ba2b1701b459754653701d8a49998}{clear\+\_\+input\+\_\+buffer}} ()
+\begin{DoxyCompactList}\small\item\em Clears the input buffer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{utils_8c_a8dee4f567071c278b05d8a5672e959b0}{get\+\_\+int\+\_\+input}} (const char \texorpdfstring{$\ast$}{*}prompt, int min, int max)
+\begin{DoxyCompactList}\small\item\em Requesting an integer as input from the user. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{utils_8c_a0789a890764d7768defb56efc6c7612d}{press\+\_\+enter\+\_\+to\+\_\+continue}} ()
+\begin{DoxyCompactList}\small\item\em Pauses the execution until the user presses enter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of general utility functions for valid inputs. 
+
+\begin{DoxyAuthor}{Author}
+Fernado 908697 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{utils_8c_a569ba2b1701b459754653701d8a49998}\label{utils_8c_a569ba2b1701b459754653701d8a49998} 
+\index{utils.c@{utils.c}!clear\_input\_buffer@{clear\_input\_buffer}}
+\index{clear\_input\_buffer@{clear\_input\_buffer}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{clear\_input\_buffer()}{clear\_input\_buffer()}}
+{\footnotesize\ttfamily void clear\+\_\+input\+\_\+buffer (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears the input buffer. 
+
+\Hypertarget{utils_8c_a4953d1edcbbfc7e420c423ded1d5621a}\label{utils_8c_a4953d1edcbbfc7e420c423ded1d5621a} 
+\index{utils.c@{utils.c}!clear\_screen@{clear\_screen}}
+\index{clear\_screen@{clear\_screen}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{clear\_screen()}{clear\_screen()}}
+{\footnotesize\ttfamily void clear\+\_\+screen (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clear the console screen. 
+
+Clears the terminal screen. \Hypertarget{utils_8c_a8dee4f567071c278b05d8a5672e959b0}\label{utils_8c_a8dee4f567071c278b05d8a5672e959b0} 
+\index{utils.c@{utils.c}!get\_int\_input@{get\_int\_input}}
+\index{get\_int\_input@{get\_int\_input}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{get\_int\_input()}{get\_int\_input()}}
+{\footnotesize\ttfamily int get\+\_\+int\+\_\+input (\begin{DoxyParamCaption}\item[{const char \texorpdfstring{$\ast$}{*}}]{prompt,  }\item[{int}]{min,  }\item[{int}]{max }\end{DoxyParamCaption})}
+
+
+
+Requesting an integer as input from the user. 
+
+\texorpdfstring{$\ast$}{*}
+\begin{DoxyParams}{Parameters}
+{\em prompt} & The message to display to the user \\
+\hline
+{\em min} & The minimum acceptable value \\
+\hline
+{\em max} & The maximum acceptable value \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The validated integer entered by the user 
+\end{DoxyReturn}
+\Hypertarget{utils_8c_a0789a890764d7768defb56efc6c7612d}\label{utils_8c_a0789a890764d7768defb56efc6c7612d} 
+\index{utils.c@{utils.c}!press\_enter\_to\_continue@{press\_enter\_to\_continue}}
+\index{press\_enter\_to\_continue@{press\_enter\_to\_continue}!utils.c@{utils.c}}
+\doxysubsubsection{\texorpdfstring{press\_enter\_to\_continue()}{press\_enter\_to\_continue()}}
+{\footnotesize\ttfamily void press\+\_\+enter\+\_\+to\+\_\+continue (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Pauses the execution until the user presses enter. 
+

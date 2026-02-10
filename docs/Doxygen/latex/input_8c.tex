@@ -1,0 +1,45 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/utils/input.c File Reference}
+\hypertarget{input_8c}{}\label{input_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/utils/input.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/utils/input.c}}
+
+
+Implementation of simple input handling using standard C functions.  
+
+
+{\ttfamily \#include "{}input.\+h"{}}\newline
+{\ttfamily \#include "{}utils.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for input.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{input_8c_a06d0b4c33980919275788ac50bb66c06}{read\+\_\+single\+\_\+char}} ()
+\begin{DoxyCompactList}\small\item\em Reads a single character from stdin without requiring Enter (if possible) \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of simple input handling using standard C functions. 
+
+\begin{DoxyAuthor}{Author}
+Fernado 908697 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{input_8c_a06d0b4c33980919275788ac50bb66c06}\label{input_8c_a06d0b4c33980919275788ac50bb66c06} 
+\index{input.c@{input.c}!read\_single\_char@{read\_single\_char}}
+\index{read\_single\_char@{read\_single\_char}!input.c@{input.c}}
+\doxysubsubsection{\texorpdfstring{read\_single\_char()}{read\_single\_char()}}
+{\footnotesize\ttfamily char read\+\_\+single\+\_\+char (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reads a single character from stdin without requiring Enter (if possible) 
+
+
+\begin{DoxyItemize}
+\item Used primarily for detecting the Konami Code sequence. \begin{DoxyReturn}{Returns}
+The character entered by the user. 
+\end{DoxyReturn}
+
+\end{DoxyItemize}

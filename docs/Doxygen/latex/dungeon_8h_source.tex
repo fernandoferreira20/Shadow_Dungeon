@@ -1,0 +1,35 @@
+\doxysection{dungeon.\+h}
+\hypertarget{dungeon_8h_source}{}\label{dungeon_8h_source}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/dungeon.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/dungeon.h}}
+\mbox{\hyperlink{dungeon_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ DUNGEON\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ DUNGEON\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__types_8h}{game\_types.h}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{enemies_8h}{entities/enemies.h}}"{}}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00013\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1adb3ba64173cdd013687b6345f90ce98c}{ROOM\_EMPTY}},}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a5838c0d4ab3469cac262a702b4b50e65}{ROOM\_TRAP}},}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a955dcd3c5ddce08e6e5eb64968011bb1}{ROOM\_FIGHT}}}
+\DoxyCodeLine{00017\ \}\ \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1}{RoomType}};}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDungeonRoom}{DungeonRoom}}\{}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1}{RoomType}}\ \mbox{\hyperlink{structDungeonRoom_a3f08b7568d1a3f10397e560018bcbbeb}{type}};}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{structEnemy}{Enemy}}\ \mbox{\hyperlink{structDungeonRoom_a526a2de3d80158424070253dd2e6e6be}{content}};}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structDungeonRoom_add8983d63eb9d3862016a33c3e66ca53}{is\_cleared}};\ \textcolor{comment}{//true\ if\ the\ room\ has\ been\ cleared\ from\ enemies}}
+\DoxyCodeLine{00025\ \}\ \mbox{\hyperlink{structDungeonRoom}{DungeonRoom}};}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structDungeon}{Dungeon}}\ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{structDungeonRoom}{DungeonRoom}}\ \mbox{\hyperlink{structDungeon_aa8b3786c593e790dfdabcba16c37878d}{rooms}}[\mbox{\hyperlink{game__constants_8h_ace4590cc5fbcd7a8a6cf5a69cb0a4274}{MAX\_DUNGEON\_ROOMS}}];}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structDungeon_a7f209de1dcacb85f4161821f589d1858}{current\_room\_index}};\ \textcolor{comment}{//this\ is\ to\ track\ the\ player\ progress}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{MissionType}}\ \mbox{\hyperlink{structDungeon_aeac54d7116daf21bd1a716253d86a882}{mission\_type}};}
+\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{structDungeon}{Dungeon}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00043\ \mbox{\hyperlink{structDungeon}{Dungeon}}\ \mbox{\hyperlink{dungeon_8h_a5d7eb2309d5e140d64316ae566845714}{create\_dungeon}}(\mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{MissionType}}\ type);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00054\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{dungeon_8h_ab5fa2f792fa6e8ccf0e8850956672ec9}{process\_current\_room}}(\mbox{\hyperlink{structDungeon}{Dungeon}}\ *dungeon,\ \mbox{\hyperlink{structHero}{Hero}}\ *hero,\ \mbox{\hyperlink{structMissionStatus}{MissionStatus}}\ *status);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

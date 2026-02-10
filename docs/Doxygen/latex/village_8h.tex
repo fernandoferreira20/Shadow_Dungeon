@@ -1,0 +1,97 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/world/village.h File Reference}
+\hypertarget{village_8h}{}\label{village_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/village.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/village.h}}
+
+
+Manages the Main Village and hub interactions.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+Include dependency graph for village.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{village_8h_a041a2a58a0c91d04ab06344b3765939f}{display\+\_\+village\+\_\+menu}} (const \mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Display the Village Menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{village_8h_a9216f109b274a90ae6cb33d91f164005}{rest\+\_\+in\+\_\+village}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero)
+\begin{DoxyCompactList}\small\item\em Restore \doxylink{structHero}{Hero}\textquotesingle{}s life points (to MAX\+\_\+\+LIFE) \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{village_8h_a976d9a44fe9111d25a5ba7382d6fb5d2}{perform\+\_\+exit\+\_\+sequence}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Handling the logic to exit the game. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{village_8h_a3c53fc93bffd0264a71f88a2cf3b59bf}{enter\+\_\+village}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Main Loop of the Village. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the Main Village and hub interactions. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{village_8h_a041a2a58a0c91d04ab06344b3765939f}\label{village_8h_a041a2a58a0c91d04ab06344b3765939f} 
+\index{village.h@{village.h}!display\_village\_menu@{display\_village\_menu}}
+\index{display\_village\_menu@{display\_village\_menu}!village.h@{village.h}}
+\doxysubsubsection{\texorpdfstring{display\_village\_menu()}{display\_village\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+village\+\_\+menu (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Display the Village Menu. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+\end{DoxyParams}
+\Hypertarget{village_8h_a3c53fc93bffd0264a71f88a2cf3b59bf}\label{village_8h_a3c53fc93bffd0264a71f88a2cf3b59bf} 
+\index{village.h@{village.h}!enter\_village@{enter\_village}}
+\index{enter\_village@{enter\_village}!village.h@{village.h}}
+\doxysubsubsection{\texorpdfstring{enter\_village()}{enter\_village()}}
+{\footnotesize\ttfamily int enter\+\_\+village (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Main Loop of the Village. 
+
+
+\begin{DoxyItemize}
+\item Handles user input to choose between Missions, Rest, Inventory, Save or Exit 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int\+: The Mission ID selected (0-\/3), or -\/1 to Exit Game 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{village_8h_a976d9a44fe9111d25a5ba7382d6fb5d2}\label{village_8h_a976d9a44fe9111d25a5ba7382d6fb5d2} 
+\index{village.h@{village.h}!perform\_exit\_sequence@{perform\_exit\_sequence}}
+\index{perform\_exit\_sequence@{perform\_exit\_sequence}!village.h@{village.h}}
+\doxysubsubsection{\texorpdfstring{perform\_exit\_sequence()}{perform\_exit\_sequence()}}
+{\footnotesize\ttfamily bool perform\+\_\+exit\+\_\+sequence (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Handling the logic to exit the game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+\end{DoxyParams}
+\Hypertarget{village_8h_a9216f109b274a90ae6cb33d91f164005}\label{village_8h_a9216f109b274a90ae6cb33d91f164005} 
+\index{village.h@{village.h}!rest\_in\_village@{rest\_in\_village}}
+\index{rest\_in\_village@{rest\_in\_village}!village.h@{village.h}}
+\doxysubsubsection{\texorpdfstring{rest\_in\_village()}{rest\_in\_village()}}
+{\footnotesize\ttfamily void rest\+\_\+in\+\_\+village (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero }\end{DoxyParamCaption})}
+
+
+
+Restore \doxylink{structHero}{Hero}\textquotesingle{}s life points (to MAX\+\_\+\+LIFE) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the hero to heal \\
+\hline
+\end{DoxyParams}

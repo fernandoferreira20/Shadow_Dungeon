@@ -1,0 +1,93 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/menus/mission\+\_\+menu.c File Reference}
+\hypertarget{mission__menu_8c}{}\label{mission__menu_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/menus/mission\_menu.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/menus/mission\_menu.c}}
+
+
+Implementation of the In-\/\+Mission Menu.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include "{}mission\+\_\+menu.\+h"{}}\newline
+{\ttfamily \#include "{}utils/utils.\+h"{}}\newline
+{\ttfamily \#include "{}items/inventory.\+h"{}}\newline
+{\ttfamily \#include "{}items/shop.\+h"{}}\newline
+{\ttfamily \#include "{}menus/menus.\+h"{}}\newline
+Include dependency graph for mission\+\_\+menu.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{mission__menu_8c_ae7d7d2dd487b43c7b5ef76625afaaec3}{return\+\_\+to\+\_\+village}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, const \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}status)
+\begin{DoxyCompactList}\small\item\em Attempting to exit the mission without completing it. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{mission__menu_8c_a8841f7a2d6e5bb0a62d7dddeacd8688f}{display\+\_\+mission\+\_\+menu}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, \mbox{\hyperlink{structDungeon}{Dungeon}} \texorpdfstring{$\ast$}{*}dungeon, \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}status)
+\begin{DoxyCompactList}\small\item\em Displays the mission menu and handles user input. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the In-\/\+Mission Menu. 
+
+\begin{DoxyAuthor}{Author}
+Alexandru 907625 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{mission__menu_8c_a8841f7a2d6e5bb0a62d7dddeacd8688f}\label{mission__menu_8c_a8841f7a2d6e5bb0a62d7dddeacd8688f} 
+\index{mission\_menu.c@{mission\_menu.c}!display\_mission\_menu@{display\_mission\_menu}}
+\index{display\_mission\_menu@{display\_mission\_menu}!mission\_menu.c@{mission\_menu.c}}
+\doxysubsubsection{\texorpdfstring{display\_mission\_menu()}{display\_mission\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+mission\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{\mbox{\hyperlink{structDungeon}{Dungeon}} \texorpdfstring{$\ast$}{*}}]{dungeon,  }\item[{\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}}]{status }\end{DoxyParamCaption})}
+
+
+
+Displays the mission menu and handles user input. 
+
+
+\begin{DoxyItemize}
+\item Options\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Explore \doxylink{structDungeon}{Dungeon} Room
+\item Shop
+\item Inventory
+\item Return to village 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to hero \\
+\hline
+{\em dungeon} & Pointer to the dungeon \\
+\hline
+{\em status} & Pointer to the mission status \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyEnumerate}\Hypertarget{mission__menu_8c_ae7d7d2dd487b43c7b5ef76625afaaec3}\label{mission__menu_8c_ae7d7d2dd487b43c7b5ef76625afaaec3} 
+\index{mission\_menu.c@{mission\_menu.c}!return\_to\_village@{return\_to\_village}}
+\index{return\_to\_village@{return\_to\_village}!mission\_menu.c@{mission\_menu.c}}
+\doxysubsubsection{\texorpdfstring{return\_to\_village()}{return\_to\_village()}}
+{\footnotesize\ttfamily bool return\+\_\+to\+\_\+village (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{const \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}}]{status }\end{DoxyParamCaption})}
+
+
+
+Attempting to exit the mission without completing it. 
+
+
+\begin{DoxyItemize}
+\item Conditions\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item If Mission is Complete -\/\texorpdfstring{$>$}{>} Returns true (Free)
+\item If Mission Incomplete -\/\texorpdfstring{$>$}{>} Checks for 50 Coins
+\end{DoxyEnumerate}
+\begin{DoxyItemize}
+\item If rich enough\+: Deducts 50 coins, Returns true
+\item If poor\+: Prints error, Returns false 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to hero \\
+\hline
+{\em status} & Pointer to the mission status \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if exit is allowed, false otherwise 
+\end{DoxyReturn}
+
+\end{DoxyItemize}

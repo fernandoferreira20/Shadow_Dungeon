@@ -1,0 +1,108 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/save\+\_\+system/save\+\_\+manager.h File Reference}
+\hypertarget{save__manager_8h}{}\label{save__manager_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/save\_system/save\_manager.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/save\_system/save\_manager.h}}
+
+
+Manages the creation, retrieval, and deletion of game saves.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+Include dependency graph for save\+\_\+manager.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{save__manager_8h_a33c023579162e075583b33f4fd5a61d1}{save\+\_\+game}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Creates a new save snapshot from the current game state. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSaveNode}{Save\+Node}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{save__manager_8h_ad7abe59acf3fabf37df7a3584c20bf14}{get\+\_\+save\+\_\+list}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Retrieves the head of the save list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{save__manager_8h_a9ba88c9f8b20176be376b00ecddb2635}{delete\+\_\+save}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data, int index)
+\begin{DoxyCompactList}\small\item\em Deletes a specific save from the list. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{save__manager_8h_abe9a03b8a4a605739e0262997616116c}{load\+\_\+save}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data, int index)
+\begin{DoxyCompactList}\small\item\em Loads a specific save state into the active game data. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages the creation, retrieval, and deletion of game saves. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{save__manager_8h_a9ba88c9f8b20176be376b00ecddb2635}\label{save__manager_8h_a9ba88c9f8b20176be376b00ecddb2635} 
+\index{save\_manager.h@{save\_manager.h}!delete\_save@{delete\_save}}
+\index{delete\_save@{delete\_save}!save\_manager.h@{save\_manager.h}}
+\doxysubsubsection{\texorpdfstring{delete\_save()}{delete\_save()}}
+{\footnotesize\ttfamily bool delete\+\_\+save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Deletes a specific save from the list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+{\em index} & The 1-\/based index of the save to delete (as shown in the menu) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if deteltion was successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{save__manager_8h_ad7abe59acf3fabf37df7a3584c20bf14}\label{save__manager_8h_ad7abe59acf3fabf37df7a3584c20bf14} 
+\index{save\_manager.h@{save\_manager.h}!get\_save\_list@{get\_save\_list}}
+\index{get\_save\_list@{get\_save\_list}!save\_manager.h@{save\_manager.h}}
+\doxysubsubsection{\texorpdfstring{get\_save\_list()}{get\_save\_list()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSaveNode}{Save\+Node}} \texorpdfstring{$\ast$}{*} get\+\_\+save\+\_\+list (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Retrieves the head of the save list. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Pointer to the first save node (or NULL if empty) 
+\end{DoxyReturn}
+\Hypertarget{save__manager_8h_abe9a03b8a4a605739e0262997616116c}\label{save__manager_8h_abe9a03b8a4a605739e0262997616116c} 
+\index{save\_manager.h@{save\_manager.h}!load\_save@{load\_save}}
+\index{load\_save@{load\_save}!save\_manager.h@{save\_manager.h}}
+\doxysubsubsection{\texorpdfstring{load\_save()}{load\_save()}}
+{\footnotesize\ttfamily bool load\+\_\+save (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data,  }\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Loads a specific save state into the active game data. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+{\em index} & The 1-\/based index of the save to load \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if load was successful, false otherwise 
+\end{DoxyReturn}
+\Hypertarget{save__manager_8h_a33c023579162e075583b33f4fd5a61d1}\label{save__manager_8h_a33c023579162e075583b33f4fd5a61d1} 
+\index{save\_manager.h@{save\_manager.h}!save\_game@{save\_game}}
+\index{save\_game@{save\_game}!save\_manager.h@{save\_manager.h}}
+\doxysubsubsection{\texorpdfstring{save\_game()}{save\_game()}}
+{\footnotesize\ttfamily void save\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Creates a new save snapshot from the current game state. 
+
+
+\begin{DoxyItemize}
+\item Adds a new node to the global save list Captures\+: Date/\+Time, Life, Coins, Items, Missions 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}

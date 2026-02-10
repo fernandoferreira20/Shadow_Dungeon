@@ -1,0 +1,73 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/assets/game\+\_\+data.c File Reference}
+\hypertarget{game__data_8c}{}\label{game__data_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/assets/game\_data.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/assets/game\_data.c}}
+
+
+Implementation of game state management.  
+
+
+{\ttfamily \#include "{}game\+\_\+data.\+h"{}}\newline
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$time.\+h$>$}\newline
+Include dependency graph for game\+\_\+data.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{game__data_8c_acff91075ab763ac30a793dd8278b68ae}{load\+\_\+game\+\_\+data}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data, const \mbox{\hyperlink{structSaveData}{Save\+Data}} \texorpdfstring{$\ast$}{*}save)
+\begin{DoxyCompactList}\small\item\em Populates the active \doxylink{structGameData}{Game\+Data} from a \doxylink{structSaveData}{Save\+Data} snapshot. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{structSaveData}{Save\+Data}} \mbox{\hyperlink{game__data_8c_a84da7dec0a08f94df7475cfc0f720a10}{create\+\_\+save\+\_\+data}} (const \mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Creates a \doxylink{structSaveData}{Save\+Data} snapshot from the current game state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of game state management. 
+
+\begin{DoxyAuthor}{Author}
+Fernando 908697 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{game__data_8c_a84da7dec0a08f94df7475cfc0f720a10}\label{game__data_8c_a84da7dec0a08f94df7475cfc0f720a10} 
+\index{game\_data.c@{game\_data.c}!create\_save\_data@{create\_save\_data}}
+\index{create\_save\_data@{create\_save\_data}!game\_data.c@{game\_data.c}}
+\doxysubsubsection{\texorpdfstring{create\_save\_data()}{create\_save\_data()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structSaveData}{Save\+Data}} create\+\_\+save\+\_\+data (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Creates a \doxylink{structSaveData}{Save\+Data} snapshot from the current game state. 
+
+
+\begin{DoxyItemize}
+\item This is used when the player wants to save the game 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the \doxylink{structGameData}{Game\+Data} \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A struct containing the persistent state 
+\end{DoxyReturn}
+
+\end{DoxyItemize}\Hypertarget{game__data_8c_acff91075ab763ac30a793dd8278b68ae}\label{game__data_8c_acff91075ab763ac30a793dd8278b68ae} 
+\index{game\_data.c@{game\_data.c}!load\_game\_data@{load\_game\_data}}
+\index{load\_game\_data@{load\_game\_data}!game\_data.c@{game\_data.c}}
+\doxysubsubsection{\texorpdfstring{load\_game\_data()}{load\_game\_data()}}
+{\footnotesize\ttfamily void load\+\_\+game\+\_\+data (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data,  }\item[{const \mbox{\hyperlink{structSaveData}{Save\+Data}} \texorpdfstring{$\ast$}{*}}]{save }\end{DoxyParamCaption})}
+
+
+
+Populates the active \doxylink{structGameData}{Game\+Data} from a \doxylink{structSaveData}{Save\+Data} snapshot. 
+
+
+\begin{DoxyItemize}
+\item Used when the player selects "{}\+Load Game"{}. Copies stats, inventory, and mission progress from the save file into the current game state 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the active \doxylink{structGameData}{Game\+Data} to populate \\
+\hline
+{\em save} & Pointer to the source \doxylink{structSaveData}{Save\+Data} \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}

@@ -1,0 +1,44 @@
+\doxysection{enemies.\+h}
+\hypertarget{enemies_8h_source}{}\label{enemies_8h_source}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/entities/enemies.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/entities/enemies.h}}
+\mbox{\hyperlink{enemies_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ ENEMIES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ ENEMIES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__types_8h}{game\_types.h}}"{}}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00012\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00013\ \ \ \ \ \textcolor{comment}{//\ Rotting\ Swamp}}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ead5afcee280b1f1d5eb2a445fa728102b}{WILD\_DOG}},}
+\DoxyCodeLine{00015\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eafdbd3796c3ee76ea97f36cc85ebd7195}{GOBLIN}},}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea8131dcff1c9e1b75de0d36de9002b56d}{SKELETON}},}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea451a9d6b27bc5efb87a8c6c96e8c7cd1}{ORC}},}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea1d35def6924083c46c8261f1172e5020}{ORC\_GENERAL}},}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ Haunted\ Mansion}}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea428075839e80181784bb2150feffe8a9}{BAT}},}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea5dfb36109b24f39d54d5c3f48f53def8}{ZOMBIE}},}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eaafb66fa4bd16d2ef34dd31a85512203e}{PHANTOM}},}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea05ece39617a1e9dcc675b6998c96bb4a}{GREATER\_VAMPIRE}},}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eae131d49691afa846b20d11855aa7f26a}{GUARDIAN\_DEMON}},}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ Crystal\ Cave}}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eaf5ee5b7c66d68593e93ac8093a656e34}{ANCIENT\_DRAGON}},}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ Final\ Boss}}
+\DoxyCodeLine{00031\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea6c92641759b13b769a1735c08d14693b}{DARK\_LORD}}}
+\DoxyCodeLine{00032\ \}\ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268e}{EnemyType}};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structEnemy}{Enemy}}\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268e}{EnemyType}}\ \mbox{\hyperlink{structEnemy_a51791619a70962355568fae00cb96cdb}{type}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structEnemy_ae50c4db60e201afabd8a731727a1ae22}{name}}[\mbox{\hyperlink{game__constants_8h_a4fa9aad0e9c7cc2e344b679cdbb2b67d}{MAX\_STRING\_LEN}}];}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structEnemy_ac545044cad7be6130c0aaaa1148ac4a4}{fatal\_strike\_req}};\ \textcolor{comment}{//dice\ roll\ to\ defeat\ the\ enemy}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structEnemy_a9b3c475b293a7a52c30ba17249c49efd}{damage\_inflicted}};\ \textcolor{comment}{//damage\ dealt\ to\ hero\ if\ the\ attack\ doesn't\ work}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structEnemy_a3c55fd5342b20167cf0fdb55c5585083}{coins\_reward}};\ \textcolor{comment}{//coins\ given\ to\ the\ hero\ in\ case\ he\ wins\ the\ fight}}
+\DoxyCodeLine{00041\ \}\ \mbox{\hyperlink{structEnemy}{Enemy}};}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00048\ \mbox{\hyperlink{structEnemy}{Enemy}}\ \mbox{\hyperlink{enemies_8h_ac3f36b778d32a96e5007def55d39ad01}{create\_enemy}}(\mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268e}{EnemyType}}\ type);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,67 @@
+\doxysection{game\+\_\+types.\+h}
+\hypertarget{game__types_8h_source}{}\label{game__types_8h_source}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/include/game\_types.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/include/game\_types.h}}
+\mbox{\hyperlink{game__types_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ GAME\_TYPES\_H}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ GAME\_TYPES\_H}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <stdbool.h>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{game__constants_8h}{game\_constants.h}}"{}}\ \textcolor{comment}{//used\ for\ the\ global\ constants}}
+\DoxyCodeLine{00006\ }
+\DoxyCodeLine{00012\ \ \textcolor{comment}{//\ Enumerations\ }}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00015\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00016\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66baeed2e77e8995f8911e21089b7f2b84a3}{ITEM\_POTION}},\ \textcolor{comment}{//\ for\ restoring\ the\ health}}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66ba589ba23814fa71b60f0bf3e0fe409ac2}{ITEM\_SWORD}},\ \textcolor{comment}{//\ +1\ attack}}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66ba064d90eacd9dc976204864d665cdba2a}{ITEM\_ARMOR}},\ \textcolor{comment}{//\ -\/1\ damage\ taken}}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66bafd96adb98142bccc2b39bd04ce297dcb}{ITEM\_HERO\_SWORD}},\ \textcolor{comment}{//\ +2\ attack}}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66ba229a787e926456e775c5460589d97310}{ITEM\_KEY}}\ \textcolor{comment}{//\ to\ unlock\ the\ Dark\ Lord's\ Castle}}
+\DoxyCodeLine{00021\ \ \}\ \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66b}{ItemType}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00024\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}\ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752aa38896d0c038a94befd9c7afc6fcc7f7}{MISSION\_SWAMP}}\ =\ 0,\ \textcolor{comment}{//\ Start\ at\ 0\ to\ match\ array\ indexing}}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a6ae099244f755651d3c86a5d5aa47b67}{MISSION\_MANSION}},}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752abcc30da8fb7f557589ad700909c584ba}{MISSION\_CAVE}},}
+\DoxyCodeLine{00028\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a17facca33f633b87c4461cd95c27b383}{MISSION\_CASTLE}}}
+\DoxyCodeLine{00029\ \ \}\ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{MissionType}};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00032\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structHero}{Hero}}\ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structHero_a45a13a62814b622b65c826bd02c456c9}{life\_points}};}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structHero_a9df000dcd2e1839d68fecb0a5ece7f01}{coins}};}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structHero_a089418017ab255507c4213a1bf070931}{potions\_count}};}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structHero_a07d2cf746e29e35e23c415c68d2372c7}{has\_sword}};}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structHero_a439ddd5d5e2117840770335460ad13ef}{has\_hero\_sword}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structHero_a96dde745e2b2d9c458a62bb4d269cb96}{has\_armor}};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structHero_aefbb588ae21155e4aa592b6546164651}{has\_key}};}
+\DoxyCodeLine{00040\ \ \}\ \mbox{\hyperlink{structHero}{Hero}};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00043\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structMissionStatus}{MissionStatus}}\ \{}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{MissionType}}\ \mbox{\hyperlink{structMissionStatus_ae1af570e3af62a81554b49b34737538a}{type}};}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structMissionStatus_ae1689ae92482549cb5117d4cfe9d6a46}{is\_completed}};\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structMissionStatus_ae29f6931b305eea21a9056f50f4d981d}{progress\_counter}};\ \textcolor{comment}{//\ To\ know\ how\ many\ enemies\ we\ defeated\ }}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structMissionStatus_a19f5dcd5d6016060b1f7d6171a9ccef8}{key\_recovered}};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structMissionStatus_aea88084c67de091c85c1c304ee85a7ba}{sword\_recovered}};}
+\DoxyCodeLine{00049\ \ \}\ \mbox{\hyperlink{structMissionStatus}{MissionStatus}};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00052\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSaveData}{SaveData}}\ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{char}\ \mbox{\hyperlink{structSaveData_a9bb3886eba6395570df048e761bb94eb}{date\_time}}[\mbox{\hyperlink{game__constants_8h_a4fa9aad0e9c7cc2e344b679cdbb2b67d}{MAX\_STRING\_LEN}}];}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{structSaveData_a763e289917f7a548f46af4b5560d332b}{completed\_missions\_count}};}
+\DoxyCodeLine{00055\ \ \ \ \ \mbox{\hyperlink{structHero}{Hero}}\ \mbox{\hyperlink{structSaveData_a6c0f9d37b77f57feb70e55b972363247}{hero\_snapshot}};\ \textcolor{comment}{//\ conatins\ life,\ coins,\ items}}
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{structMissionStatus}{MissionStatus}}\ \mbox{\hyperlink{structSaveData_a126cd001f9d3ee514bec94012c3f36d3}{mission\_snapshot}}[\mbox{\hyperlink{game__constants_8h_aca594a54ee59e35521e8593d6d9ee3f8}{MAX\_MISSIONS}}];}
+\DoxyCodeLine{00057\ \ \}\ \mbox{\hyperlink{structSaveData}{SaveData}};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00060\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSaveNode}{SaveNode}}\ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{structSaveData}{SaveData}}\ \mbox{\hyperlink{structSaveNode_ad849bdb0bb514d80d7972fecd63cc36f}{data}};\ \ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structSaveNode}{SaveNode}}\ *\mbox{\hyperlink{structSaveNode_a25576904054ec54e8db7b5b114b72bef}{next}};}
+\DoxyCodeLine{00063\ \ \}\ \mbox{\hyperlink{structSaveNode}{SaveNode}};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct\ }\mbox{\hyperlink{structGameData}{GameData}}\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \mbox{\hyperlink{structHero}{Hero}}\ \mbox{\hyperlink{structGameData_a2c8d4f1126fb2f97ec3f356fdbee213d}{current\_hero}};}
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{structMissionStatus}{MissionStatus}}\ \mbox{\hyperlink{structGameData_a79b74ca5a67aa93a5c982e88cb7084f2}{missions}}[\mbox{\hyperlink{game__constants_8h_aca594a54ee59e35521e8593d6d9ee3f8}{MAX\_MISSIONS}}];\ \textcolor{comment}{//\ tracking\ all\ the\ missions}}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{structSaveNode}{SaveNode}}\ *\mbox{\hyperlink{structGameData_a4438c101b221998ea952448c90d3c9aa}{save\_list\_head}};\ \textcolor{comment}{//\ head\ of\ the\ linked\ lists}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{structGameData_a96b0d9c55a9ce53336a780aca49d33af}{cheats\_unlocked}};\ \textcolor{comment}{//\ true\ if\ the\ Konami\ code\ was\ entered}}
+\DoxyCodeLine{00071\ \ \}\ \mbox{\hyperlink{structGameData}{GameData}};}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \textcolor{preprocessor}{\ \#endif}}
+
+\end{DoxyCode}

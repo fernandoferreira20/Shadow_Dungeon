@@ -1,0 +1,61 @@
+\doxysection{Save\+Data Struct Reference}
+\hypertarget{structSaveData}{}\label{structSaveData}\index{SaveData@{SaveData}}
+
+
+Represents a snapshot of the game state for saving.  
+
+
+
+
+{\ttfamily \#include $<$game\+\_\+types.\+h$>$}
+
+
+
+Collaboration diagram for Save\+Data\+:
+% FIG 0
+\doxysubsubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+char \mbox{\hyperlink{structSaveData_a9bb3886eba6395570df048e761bb94eb}{date\+\_\+time}} \mbox{[}\mbox{\hyperlink{game__constants_8h_a4fa9aad0e9c7cc2e344b679cdbb2b67d}{MAX\+\_\+\+STRING\+\_\+\+LEN}}\mbox{]}
+\item 
+int \mbox{\hyperlink{structSaveData_a763e289917f7a548f46af4b5560d332b}{completed\+\_\+missions\+\_\+count}}
+\item 
+\mbox{\hyperlink{structHero}{Hero}} \mbox{\hyperlink{structSaveData_a6c0f9d37b77f57feb70e55b972363247}{hero\+\_\+snapshot}}
+\item 
+\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \mbox{\hyperlink{structSaveData_a126cd001f9d3ee514bec94012c3f36d3}{mission\+\_\+snapshot}} \mbox{[}\mbox{\hyperlink{game__constants_8h_aca594a54ee59e35521e8593d6d9ee3f8}{MAX\+\_\+\+MISSIONS}}\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a snapshot of the game state for saving. 
+
+\doxysubsection{Field Documentation}
+\Hypertarget{structSaveData_a763e289917f7a548f46af4b5560d332b}\label{structSaveData_a763e289917f7a548f46af4b5560d332b} 
+\index{SaveData@{SaveData}!completed\_missions\_count@{completed\_missions\_count}}
+\index{completed\_missions\_count@{completed\_missions\_count}!SaveData@{SaveData}}
+\doxysubsubsection{\texorpdfstring{completed\_missions\_count}{completed\_missions\_count}}
+{\footnotesize\ttfamily int Save\+Data\+::completed\+\_\+missions\+\_\+count}
+
+\Hypertarget{structSaveData_a9bb3886eba6395570df048e761bb94eb}\label{structSaveData_a9bb3886eba6395570df048e761bb94eb} 
+\index{SaveData@{SaveData}!date\_time@{date\_time}}
+\index{date\_time@{date\_time}!SaveData@{SaveData}}
+\doxysubsubsection{\texorpdfstring{date\_time}{date\_time}}
+{\footnotesize\ttfamily char Save\+Data\+::date\+\_\+time\mbox{[}\mbox{\hyperlink{game__constants_8h_a4fa9aad0e9c7cc2e344b679cdbb2b67d}{MAX\+\_\+\+STRING\+\_\+\+LEN}}\mbox{]}}
+
+\Hypertarget{structSaveData_a6c0f9d37b77f57feb70e55b972363247}\label{structSaveData_a6c0f9d37b77f57feb70e55b972363247} 
+\index{SaveData@{SaveData}!hero\_snapshot@{hero\_snapshot}}
+\index{hero\_snapshot@{hero\_snapshot}!SaveData@{SaveData}}
+\doxysubsubsection{\texorpdfstring{hero\_snapshot}{hero\_snapshot}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structHero}{Hero}} Save\+Data\+::hero\+\_\+snapshot}
+
+\Hypertarget{structSaveData_a126cd001f9d3ee514bec94012c3f36d3}\label{structSaveData_a126cd001f9d3ee514bec94012c3f36d3} 
+\index{SaveData@{SaveData}!mission\_snapshot@{mission\_snapshot}}
+\index{mission\_snapshot@{mission\_snapshot}!SaveData@{SaveData}}
+\doxysubsubsection{\texorpdfstring{mission\_snapshot}{mission\_snapshot}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} Save\+Data\+::mission\+\_\+snapshot\mbox{[}\mbox{\hyperlink{game__constants_8h_aca594a54ee59e35521e8593d6d9ee3f8}{MAX\+\_\+\+MISSIONS}}\mbox{]}}
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/include/\mbox{\hyperlink{game__types_8h}{game\+\_\+types.\+h}}\end{DoxyCompactItemize}

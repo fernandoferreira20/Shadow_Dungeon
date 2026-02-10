@@ -1,0 +1,99 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/combat/final\+\_\+boss.c File Reference}
+\hypertarget{final__boss_8c}{}\label{final__boss_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/combat/final\_boss.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/combat/final\_boss.c}}
+
+
+Implementation of the Dark Lord fight and Padovan Sequence.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include "{}final\+\_\+boss.\+h"{}}\newline
+{\ttfamily \#include "{}utils/random.\+h"{}}\newline
+{\ttfamily \#include "{}utils/utils.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+constants.\+h"{}}\newline
+{\ttfamily \#include "{}menus/menus.\+h"{}}\newline
+Include dependency graph for final\+\_\+boss.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{final__boss_8c_aff0f8b5a17421e1fd3812ab7ac5dddd5}{is\+\_\+padovan}} (int number)
+\begin{DoxyCompactList}\small\item\em Checks if a number belongs to the padovan sequence It is implemented recursively Sequence\+: P(n) = P(n-\/2) + P(n-\/3) It is used for the interaction with the ancient dragon. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{final__boss_8c_afbeb93e09dec1c8d52f03ab6f9ab0fbf}{resolve\+\_\+round}} (\mbox{\hyperlink{final__boss_8h_aee6c46e83c5518addaf76722d135aa6c}{Boss\+Move}} hero\+\_\+move, \mbox{\hyperlink{final__boss_8h_aee6c46e83c5518addaf76722d135aa6c}{Boss\+Move}} boss\+\_\+move)
+\begin{DoxyCompactList}\small\item\em Determines who is the winner. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{final__boss_8c_aeeb389da6ef96ec8893520399cddef36}{final\+\_\+boss\+\_\+fight}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero)
+\begin{DoxyCompactList}\small\item\em Manages the final boss mechanics. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of the Dark Lord fight and Padovan Sequence. 
+
+\begin{DoxyAuthor}{Author}
+Alexandru 907625 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{final__boss_8c_aeeb389da6ef96ec8893520399cddef36}\label{final__boss_8c_aeeb389da6ef96ec8893520399cddef36} 
+\index{final\_boss.c@{final\_boss.c}!final\_boss\_fight@{final\_boss\_fight}}
+\index{final\_boss\_fight@{final\_boss\_fight}!final\_boss.c@{final\_boss.c}}
+\doxysubsubsection{\texorpdfstring{final\_boss\_fight()}{final\_boss\_fight()}}
+{\footnotesize\ttfamily void final\+\_\+boss\+\_\+fight (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero }\end{DoxyParamCaption})}
+
+
+
+Manages the final boss mechanics. 
+
+
+\begin{DoxyItemize}
+\item The player has to win 3 rounds out of 5 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to hero \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{final__boss_8c_aff0f8b5a17421e1fd3812ab7ac5dddd5}\label{final__boss_8c_aff0f8b5a17421e1fd3812ab7ac5dddd5} 
+\index{final\_boss.c@{final\_boss.c}!is\_padovan@{is\_padovan}}
+\index{is\_padovan@{is\_padovan}!final\_boss.c@{final\_boss.c}}
+\doxysubsubsection{\texorpdfstring{is\_padovan()}{is\_padovan()}}
+{\footnotesize\ttfamily int is\+\_\+padovan (\begin{DoxyParamCaption}\item[{int}]{n }\end{DoxyParamCaption})}
+
+
+
+Checks if a number belongs to the padovan sequence It is implemented recursively Sequence\+: P(n) = P(n-\/2) + P(n-\/3) It is used for the interaction with the ancient dragon. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 (true) if the number is in the sequence, 0 (false) otherwise 
+\end{DoxyReturn}
+\Hypertarget{final__boss_8c_afbeb93e09dec1c8d52f03ab6f9ab0fbf}\label{final__boss_8c_afbeb93e09dec1c8d52f03ab6f9ab0fbf} 
+\index{final\_boss.c@{final\_boss.c}!resolve\_round@{resolve\_round}}
+\index{resolve\_round@{resolve\_round}!final\_boss.c@{final\_boss.c}}
+\doxysubsubsection{\texorpdfstring{resolve\_round()}{resolve\_round()}}
+{\footnotesize\ttfamily int resolve\+\_\+round (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{final__boss_8h_aee6c46e83c5518addaf76722d135aa6c}{Boss\+Move}}}]{hero\+\_\+move,  }\item[{\mbox{\hyperlink{final__boss_8h_aee6c46e83c5518addaf76722d135aa6c}{Boss\+Move}}}]{boss\+\_\+move }\end{DoxyParamCaption})}
+
+
+
+Determines who is the winner. 
+
+
+\begin{DoxyItemize}
+\item Rules\+:
+\item Shield beats Sword
+\item Sword beats Magic
+\item Magic beats Shield 
+\begin{DoxyParams}{Parameters}
+{\em hero\+\_\+move} & The player\textquotesingle{}s choice \\
+\hline
+{\em boss\+\_\+move} & The boss\textquotesingle{}s move \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+1 if \doxylink{structHero}{Hero} wins and -\/1 if Boss wins and 0 if is draw 
+\end{DoxyReturn}
+
+\end{DoxyItemize}

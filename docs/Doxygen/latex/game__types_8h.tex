@@ -1,0 +1,178 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/include/game\+\_\+types.h File Reference}
+\hypertarget{game__types_8h}{}\label{game__types_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/include/game\_types.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/include/game\_types.h}}
+
+
+Core data structure and enums for the game.  
+
+
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include "{}game\+\_\+constants.\+h"{}}\newline
+Include dependency graph for game\+\_\+types.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structHero}{Hero}}
+\begin{DoxyCompactList}\small\item\em This is for the hero\textquotesingle{}s inventory and statistics. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structMissionStatus}{Mission\+Status}}
+\begin{DoxyCompactList}\small\item\em Used for tracking the progress of a specific mission. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structSaveData}{Save\+Data}}
+\begin{DoxyCompactList}\small\item\em Represents a snapshot of the game state for saving. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structSaveNode}{Save\+Node}}
+\begin{DoxyCompactList}\small\item\em Node for the linked list of saved games. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structGameData}{Game\+Data}}
+\begin{DoxyCompactList}\small\item\em The master game structure holding the active state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structHero}{Hero}} \mbox{\hyperlink{game__types_8h_addc5c88d9738added14e95fd8f92b36f}{Hero}}
+\begin{DoxyCompactList}\small\item\em This is for the hero\textquotesingle{}s inventory and statistics. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \mbox{\hyperlink{game__types_8h_a18ff5f4b8678ebfb069316483b5c4e65}{Mission\+Status}}
+\begin{DoxyCompactList}\small\item\em Used for tracking the progress of a specific mission. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structSaveData}{Save\+Data}} \mbox{\hyperlink{game__types_8h_ab25efc412ca942fb8b14af5a277f604f}{Save\+Data}}
+\begin{DoxyCompactList}\small\item\em Represents a snapshot of the game state for saving. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structSaveNode}{Save\+Node}} \mbox{\hyperlink{game__types_8h_a38178a141e63e5d85cfca8d2e883549a}{Save\+Node}}
+\begin{DoxyCompactList}\small\item\em Node for the linked list of saved games. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structGameData}{Game\+Data}} \mbox{\hyperlink{game__types_8h_a81686c4a750540738c00bff9878109d6}{Game\+Data}}
+\begin{DoxyCompactList}\small\item\em The master game structure holding the active state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}} \{ \newline
+\mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66baeed2e77e8995f8911e21089b7f2b84a3}{ITEM\+\_\+\+POTION}}
+, \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66ba589ba23814fa71b60f0bf3e0fe409ac2}{ITEM\+\_\+\+SWORD}}
+, \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66ba064d90eacd9dc976204864d665cdba2a}{ITEM\+\_\+\+ARMOR}}
+, \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66bafd96adb98142bccc2b39bd04ce297dcb}{ITEM\+\_\+\+HERO\+\_\+\+SWORD}}
+, \newline
+\mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66ba229a787e926456e775c5460589d97310}{ITEM\+\_\+\+KEY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Here we have our hero\textquotesingle{}s items. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{Mission\+Type}} \{ \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752aa38896d0c038a94befd9c7afc6fcc7f7}{MISSION\+\_\+\+SWAMP}} = 0
+, \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a6ae099244f755651d3c86a5d5aa47b67}{MISSION\+\_\+\+MANSION}}
+, \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752abcc30da8fb7f557589ad700909c584ba}{MISSION\+\_\+\+CAVE}}
+, \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a17facca33f633b87c4461cd95c27b383}{MISSION\+\_\+\+CASTLE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Used to represent the specific mission. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Core data structure and enums for the game. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{game__types_8h_a81686c4a750540738c00bff9878109d6}\label{game__types_8h_a81686c4a750540738c00bff9878109d6} 
+\index{game\_types.h@{game\_types.h}!GameData@{GameData}}
+\index{GameData@{GameData}!game\_types.h@{game\_types.h}}
+\doxysubsubsection{\texorpdfstring{GameData}{GameData}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structGameData}{Game\+Data}} \mbox{\hyperlink{structGameData}{Game\+Data}}}
+
+
+
+The master game structure holding the active state. 
+
+\Hypertarget{game__types_8h_addc5c88d9738added14e95fd8f92b36f}\label{game__types_8h_addc5c88d9738added14e95fd8f92b36f} 
+\index{game\_types.h@{game\_types.h}!Hero@{Hero}}
+\index{Hero@{Hero}!game\_types.h@{game\_types.h}}
+\doxysubsubsection{\texorpdfstring{Hero}{Hero}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structHero}{Hero}} \mbox{\hyperlink{structHero}{Hero}}}
+
+
+
+This is for the hero\textquotesingle{}s inventory and statistics. 
+
+\Hypertarget{game__types_8h_a18ff5f4b8678ebfb069316483b5c4e65}\label{game__types_8h_a18ff5f4b8678ebfb069316483b5c4e65} 
+\index{game\_types.h@{game\_types.h}!MissionStatus@{MissionStatus}}
+\index{MissionStatus@{MissionStatus}!game\_types.h@{game\_types.h}}
+\doxysubsubsection{\texorpdfstring{MissionStatus}{MissionStatus}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \mbox{\hyperlink{structMissionStatus}{Mission\+Status}}}
+
+
+
+Used for tracking the progress of a specific mission. 
+
+\Hypertarget{game__types_8h_ab25efc412ca942fb8b14af5a277f604f}\label{game__types_8h_ab25efc412ca942fb8b14af5a277f604f} 
+\index{game\_types.h@{game\_types.h}!SaveData@{SaveData}}
+\index{SaveData@{SaveData}!game\_types.h@{game\_types.h}}
+\doxysubsubsection{\texorpdfstring{SaveData}{SaveData}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structSaveData}{Save\+Data}} \mbox{\hyperlink{structSaveData}{Save\+Data}}}
+
+
+
+Represents a snapshot of the game state for saving. 
+
+\Hypertarget{game__types_8h_a38178a141e63e5d85cfca8d2e883549a}\label{game__types_8h_a38178a141e63e5d85cfca8d2e883549a} 
+\index{game\_types.h@{game\_types.h}!SaveNode@{SaveNode}}
+\index{SaveNode@{SaveNode}!game\_types.h@{game\_types.h}}
+\doxysubsubsection{\texorpdfstring{SaveNode}{SaveNode}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structSaveNode}{Save\+Node}} \mbox{\hyperlink{structSaveNode}{Save\+Node}}}
+
+
+
+Node for the linked list of saved games. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{game__types_8h_a443f647757dde85043b49343f5cbe66b}\label{game__types_8h_a443f647757dde85043b49343f5cbe66b} 
+\index{game\_types.h@{game\_types.h}!ItemType@{ItemType}}
+\index{ItemType@{ItemType}!game\_types.h@{game\_types.h}}
+\doxysubsubsection{\texorpdfstring{ItemType}{ItemType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game__types_8h_a443f647757dde85043b49343f5cbe66b}{Item\+Type}}}
+
+
+
+Here we have our hero\textquotesingle{}s items. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ITEM\_POTION@{ITEM\_POTION}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!ITEM\_POTION@{ITEM\_POTION}}}\Hypertarget{game__types_8h_a443f647757dde85043b49343f5cbe66baeed2e77e8995f8911e21089b7f2b84a3}\label{game__types_8h_a443f647757dde85043b49343f5cbe66baeed2e77e8995f8911e21089b7f2b84a3} 
+ITEM\+\_\+\+POTION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ITEM\_SWORD@{ITEM\_SWORD}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!ITEM\_SWORD@{ITEM\_SWORD}}}\Hypertarget{game__types_8h_a443f647757dde85043b49343f5cbe66ba589ba23814fa71b60f0bf3e0fe409ac2}\label{game__types_8h_a443f647757dde85043b49343f5cbe66ba589ba23814fa71b60f0bf3e0fe409ac2} 
+ITEM\+\_\+\+SWORD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ITEM\_ARMOR@{ITEM\_ARMOR}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!ITEM\_ARMOR@{ITEM\_ARMOR}}}\Hypertarget{game__types_8h_a443f647757dde85043b49343f5cbe66ba064d90eacd9dc976204864d665cdba2a}\label{game__types_8h_a443f647757dde85043b49343f5cbe66ba064d90eacd9dc976204864d665cdba2a} 
+ITEM\+\_\+\+ARMOR&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ITEM\_HERO\_SWORD@{ITEM\_HERO\_SWORD}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!ITEM\_HERO\_SWORD@{ITEM\_HERO\_SWORD}}}\Hypertarget{game__types_8h_a443f647757dde85043b49343f5cbe66bafd96adb98142bccc2b39bd04ce297dcb}\label{game__types_8h_a443f647757dde85043b49343f5cbe66bafd96adb98142bccc2b39bd04ce297dcb} 
+ITEM\+\_\+\+HERO\+\_\+\+SWORD&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ITEM\_KEY@{ITEM\_KEY}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!ITEM\_KEY@{ITEM\_KEY}}}\Hypertarget{game__types_8h_a443f647757dde85043b49343f5cbe66ba229a787e926456e775c5460589d97310}\label{game__types_8h_a443f647757dde85043b49343f5cbe66ba229a787e926456e775c5460589d97310} 
+ITEM\+\_\+\+KEY&\\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}\label{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752} 
+\index{game\_types.h@{game\_types.h}!MissionType@{MissionType}}
+\index{MissionType@{MissionType}!game\_types.h@{game\_types.h}}
+\doxysubsubsection{\texorpdfstring{MissionType}{MissionType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{Mission\+Type}}}
+
+
+
+Used to represent the specific mission. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSION\_SWAMP@{MISSION\_SWAMP}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!MISSION\_SWAMP@{MISSION\_SWAMP}}}\Hypertarget{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752aa38896d0c038a94befd9c7afc6fcc7f7}\label{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752aa38896d0c038a94befd9c7afc6fcc7f7} 
+MISSION\+\_\+\+SWAMP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSION\_MANSION@{MISSION\_MANSION}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!MISSION\_MANSION@{MISSION\_MANSION}}}\Hypertarget{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a6ae099244f755651d3c86a5d5aa47b67}\label{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a6ae099244f755651d3c86a5d5aa47b67} 
+MISSION\+\_\+\+MANSION&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSION\_CAVE@{MISSION\_CAVE}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!MISSION\_CAVE@{MISSION\_CAVE}}}\Hypertarget{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752abcc30da8fb7f557589ad700909c584ba}\label{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752abcc30da8fb7f557589ad700909c584ba} 
+MISSION\+\_\+\+CAVE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{MISSION\_CASTLE@{MISSION\_CASTLE}!game\_types.h@{game\_types.h}}\index{game\_types.h@{game\_types.h}!MISSION\_CASTLE@{MISSION\_CASTLE}}}\Hypertarget{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a17facca33f633b87c4461cd95c27b383}\label{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752a17facca33f633b87c4461cd95c27b383} 
+MISSION\+\_\+\+CASTLE&\\
+\hline
+
+\end{DoxyEnumFields}

@@ -1,0 +1,84 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/utils/random.h File Reference}
+\hypertarget{random_8h}{}\label{random_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/utils/random.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/utils/random.h}}
+
+
+Functions for random number generation.  
+
+
+This graph shows which files directly or indirectly include this file\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{random_8h_a41e8dd180d70e127b409dbb543b5a8b8}{seed\+\_\+random}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the random number generation with a time-\/based seed. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{random_8h_af494f99ffa31cd56fecc7dcfeeaeb7e2}{roll\+\_\+die}} ()
+\begin{DoxyCompactList}\small\item\em Simulates rolling a 6-\/sided die. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{random_8h_a0bdb3254183a4193e55480b8e9bc0ac7}{flip\+\_\+coin}} ()
+\begin{DoxyCompactList}\small\item\em Simulates flipping a coin. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{random_8h_aadab9ee6cab70f8dff0c3fbb01270487}{get\+\_\+random\+\_\+in\+\_\+range}} (int min, int max)
+\begin{DoxyCompactList}\small\item\em Generates a random number within a custom range. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Functions for random number generation. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{random_8h_a0bdb3254183a4193e55480b8e9bc0ac7}\label{random_8h_a0bdb3254183a4193e55480b8e9bc0ac7} 
+\index{random.h@{random.h}!flip\_coin@{flip\_coin}}
+\index{flip\_coin@{flip\_coin}!random.h@{random.h}}
+\doxysubsubsection{\texorpdfstring{flip\_coin()}{flip\_coin()}}
+{\footnotesize\ttfamily int flip\+\_\+coin (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Simulates flipping a coin. 
+
+\begin{DoxyReturn}{Returns}
+1 for Head and 0 for Tails 
+\end{DoxyReturn}
+\Hypertarget{random_8h_aadab9ee6cab70f8dff0c3fbb01270487}\label{random_8h_aadab9ee6cab70f8dff0c3fbb01270487} 
+\index{random.h@{random.h}!get\_random\_in\_range@{get\_random\_in\_range}}
+\index{get\_random\_in\_range@{get\_random\_in\_range}!random.h@{random.h}}
+\doxysubsubsection{\texorpdfstring{get\_random\_in\_range()}{get\_random\_in\_range()}}
+{\footnotesize\ttfamily int get\+\_\+random\+\_\+in\+\_\+range (\begin{DoxyParamCaption}\item[{int}]{min,  }\item[{int}]{max }\end{DoxyParamCaption})}
+
+
+
+Generates a random number within a custom range. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min} & Lower bound \\
+\hline
+{\em max} & Upper bound \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Random integer between min and max 
+\end{DoxyReturn}
+\Hypertarget{random_8h_af494f99ffa31cd56fecc7dcfeeaeb7e2}\label{random_8h_af494f99ffa31cd56fecc7dcfeeaeb7e2} 
+\index{random.h@{random.h}!roll\_die@{roll\_die}}
+\index{roll\_die@{roll\_die}!random.h@{random.h}}
+\doxysubsubsection{\texorpdfstring{roll\_die()}{roll\_die()}}
+{\footnotesize\ttfamily int roll\+\_\+die (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Simulates rolling a 6-\/sided die. 
+
+\begin{DoxyReturn}{Returns}
+A random number between 1 to 6 
+\end{DoxyReturn}
+\Hypertarget{random_8h_a41e8dd180d70e127b409dbb543b5a8b8}\label{random_8h_a41e8dd180d70e127b409dbb543b5a8b8} 
+\index{random.h@{random.h}!seed\_random@{seed\_random}}
+\index{seed\_random@{seed\_random}!random.h@{random.h}}
+\doxysubsubsection{\texorpdfstring{seed\_random()}{seed\_random()}}
+{\footnotesize\ttfamily void seed\+\_\+random (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Initializes the random number generation with a time-\/based seed. 
+

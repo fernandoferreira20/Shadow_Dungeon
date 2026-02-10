@@ -1,0 +1,149 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/entities/enemies.h File Reference}
+\hypertarget{enemies_8h}{}\label{enemies_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/entities/enemies.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/entities/enemies.h}}
+
+
+Defines enemy types and their logic.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+Include dependency graph for enemies.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structEnemy}{Enemy}}
+\begin{DoxyCompactList}\small\item\em Defines the statistics and rewards for a single enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structEnemy}{Enemy}} \mbox{\hyperlink{enemies_8h_af975ad1eb2a131dcfa7620809ae9bf92}{Enemy}}
+\begin{DoxyCompactList}\small\item\em Defines the statistics and rewards for a single enemy. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268e}{Enemy\+Type}} \{ \newline
+\mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ead5afcee280b1f1d5eb2a445fa728102b}{WILD\+\_\+\+DOG}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eafdbd3796c3ee76ea97f36cc85ebd7195}{GOBLIN}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea8131dcff1c9e1b75de0d36de9002b56d}{SKELETON}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea451a9d6b27bc5efb87a8c6c96e8c7cd1}{ORC}}
+, \newline
+\mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea1d35def6924083c46c8261f1172e5020}{ORC\+\_\+\+GENERAL}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea428075839e80181784bb2150feffe8a9}{BAT}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea5dfb36109b24f39d54d5c3f48f53def8}{ZOMBIE}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eaafb66fa4bd16d2ef34dd31a85512203e}{PHANTOM}}
+, \newline
+\mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea05ece39617a1e9dcc675b6998c96bb4a}{GREATER\+\_\+\+VAMPIRE}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eae131d49691afa846b20d11855aa7f26a}{GUARDIAN\+\_\+\+DEMON}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268eaf5ee5b7c66d68593e93ac8093a656e34}{ANCIENT\+\_\+\+DRAGON}}
+, \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268ea6c92641759b13b769a1735c08d14693b}{DARK\+\_\+\+LORD}}
+ \}
+\begin{DoxyCompactList}\small\item\em Identifiers for every enemy type in the game. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structEnemy}{Enemy}} \mbox{\hyperlink{enemies_8h_ac3f36b778d32a96e5007def55d39ad01}{create\+\_\+enemy}} (\mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268e}{Enemy\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Factory function to create an enemy with standard stats. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines enemy types and their logic. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{enemies_8h_af975ad1eb2a131dcfa7620809ae9bf92}\label{enemies_8h_af975ad1eb2a131dcfa7620809ae9bf92} 
+\index{enemies.h@{enemies.h}!Enemy@{Enemy}}
+\index{Enemy@{Enemy}!enemies.h@{enemies.h}}
+\doxysubsubsection{\texorpdfstring{Enemy}{Enemy}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structEnemy}{Enemy}} \mbox{\hyperlink{structEnemy}{Enemy}}}
+
+
+
+Defines the statistics and rewards for a single enemy. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268e}\label{enemies_8h_ac3e413a86119db4b031458c7259e268e} 
+\index{enemies.h@{enemies.h}!EnemyType@{EnemyType}}
+\index{EnemyType@{EnemyType}!enemies.h@{enemies.h}}
+\doxysubsubsection{\texorpdfstring{EnemyType}{EnemyType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268e}{Enemy\+Type}}}
+
+
+
+Identifiers for every enemy type in the game. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WILD\_DOG@{WILD\_DOG}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!WILD\_DOG@{WILD\_DOG}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ead5afcee280b1f1d5eb2a445fa728102b}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ead5afcee280b1f1d5eb2a445fa728102b} 
+WILD\+\_\+\+DOG&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GOBLIN@{GOBLIN}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!GOBLIN@{GOBLIN}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268eafdbd3796c3ee76ea97f36cc85ebd7195}\label{enemies_8h_ac3e413a86119db4b031458c7259e268eafdbd3796c3ee76ea97f36cc85ebd7195} 
+GOBLIN&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SKELETON@{SKELETON}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!SKELETON@{SKELETON}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ea8131dcff1c9e1b75de0d36de9002b56d}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ea8131dcff1c9e1b75de0d36de9002b56d} 
+SKELETON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ORC@{ORC}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!ORC@{ORC}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ea451a9d6b27bc5efb87a8c6c96e8c7cd1}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ea451a9d6b27bc5efb87a8c6c96e8c7cd1} 
+ORC&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ORC\_GENERAL@{ORC\_GENERAL}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!ORC\_GENERAL@{ORC\_GENERAL}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ea1d35def6924083c46c8261f1172e5020}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ea1d35def6924083c46c8261f1172e5020} 
+ORC\+\_\+\+GENERAL&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BAT@{BAT}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!BAT@{BAT}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ea428075839e80181784bb2150feffe8a9}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ea428075839e80181784bb2150feffe8a9} 
+BAT&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ZOMBIE@{ZOMBIE}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!ZOMBIE@{ZOMBIE}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ea5dfb36109b24f39d54d5c3f48f53def8}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ea5dfb36109b24f39d54d5c3f48f53def8} 
+ZOMBIE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PHANTOM@{PHANTOM}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!PHANTOM@{PHANTOM}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268eaafb66fa4bd16d2ef34dd31a85512203e}\label{enemies_8h_ac3e413a86119db4b031458c7259e268eaafb66fa4bd16d2ef34dd31a85512203e} 
+PHANTOM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GREATER\_VAMPIRE@{GREATER\_VAMPIRE}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!GREATER\_VAMPIRE@{GREATER\_VAMPIRE}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ea05ece39617a1e9dcc675b6998c96bb4a}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ea05ece39617a1e9dcc675b6998c96bb4a} 
+GREATER\+\_\+\+VAMPIRE&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{GUARDIAN\_DEMON@{GUARDIAN\_DEMON}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!GUARDIAN\_DEMON@{GUARDIAN\_DEMON}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268eae131d49691afa846b20d11855aa7f26a}\label{enemies_8h_ac3e413a86119db4b031458c7259e268eae131d49691afa846b20d11855aa7f26a} 
+GUARDIAN\+\_\+\+DEMON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ANCIENT\_DRAGON@{ANCIENT\_DRAGON}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!ANCIENT\_DRAGON@{ANCIENT\_DRAGON}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268eaf5ee5b7c66d68593e93ac8093a656e34}\label{enemies_8h_ac3e413a86119db4b031458c7259e268eaf5ee5b7c66d68593e93ac8093a656e34} 
+ANCIENT\+\_\+\+DRAGON&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DARK\_LORD@{DARK\_LORD}!enemies.h@{enemies.h}}\index{enemies.h@{enemies.h}!DARK\_LORD@{DARK\_LORD}}}\Hypertarget{enemies_8h_ac3e413a86119db4b031458c7259e268ea6c92641759b13b769a1735c08d14693b}\label{enemies_8h_ac3e413a86119db4b031458c7259e268ea6c92641759b13b769a1735c08d14693b} 
+DARK\+\_\+\+LORD&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{enemies_8h_ac3f36b778d32a96e5007def55d39ad01}\label{enemies_8h_ac3f36b778d32a96e5007def55d39ad01} 
+\index{enemies.h@{enemies.h}!create\_enemy@{create\_enemy}}
+\index{create\_enemy@{create\_enemy}!enemies.h@{enemies.h}}
+\doxysubsubsection{\texorpdfstring{create\_enemy()}{create\_enemy()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structEnemy}{Enemy}} create\+\_\+enemy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{enemies_8h_ac3e413a86119db4b031458c7259e268e}{Enemy\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Factory function to create an enemy with standard stats. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The specific type of enemy to generate \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A struct containing the enemy\textquotesingle{}s stats 
+\end{DoxyReturn}

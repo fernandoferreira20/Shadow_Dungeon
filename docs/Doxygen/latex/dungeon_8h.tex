@@ -1,0 +1,151 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/world/dungeon.h File Reference}
+\hypertarget{dungeon_8h}{}\label{dungeon_8h}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/dungeon.h@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/world/dungeon.h}}
+
+
+Handles the dungeon generation and room managment.  
+
+
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}entities/enemies.\+h"{}}\newline
+Include dependency graph for dungeon.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structDungeonRoom}{Dungeon\+Room}}
+\begin{DoxyCompactList}\small\item\em Defines a single room within the dungeon. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structDungeon}{Dungeon}}
+\begin{DoxyCompactList}\small\item\em Represents the entire active dungeon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \mbox{\hyperlink{structDungeonRoom}{Dungeon\+Room}} \mbox{\hyperlink{dungeon_8h_a67add4c319d288213afc47c290a3772c}{Dungeon\+Room}}
+\begin{DoxyCompactList}\small\item\em Defines a single room within the dungeon. \end{DoxyCompactList}\item 
+typedef struct \mbox{\hyperlink{structDungeon}{Dungeon}} \mbox{\hyperlink{dungeon_8h_adb0b6f9e74c772dd9d460bd2bfa63e86}{Dungeon}}
+\begin{DoxyCompactList}\small\item\em Represents the entire active dungeon. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1}{Room\+Type}} \{ \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1adb3ba64173cdd013687b6345f90ce98c}{ROOM\+\_\+\+EMPTY}}
+, \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a5838c0d4ab3469cac262a702b4b50e65}{ROOM\+\_\+\+TRAP}}
+, \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a955dcd3c5ddce08e6e5eb64968011bb1}{ROOM\+\_\+\+FIGHT}}
+ \}
+\begin{DoxyCompactList}\small\item\em Represents the content of a single dungeon room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{structDungeon}{Dungeon}} \mbox{\hyperlink{dungeon_8h_a5d7eb2309d5e140d64316ae566845714}{create\+\_\+dungeon}} (\mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{Mission\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Generates a new procedural dungeon. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{dungeon_8h_ab5fa2f792fa6e8ccf0e8850956672ec9}{process\+\_\+current\+\_\+room}} (\mbox{\hyperlink{structDungeon}{Dungeon}} \texorpdfstring{$\ast$}{*}dungeon, \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero, \mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}status)
+\begin{DoxyCompactList}\small\item\em Procces the logic for the current room. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Handles the dungeon generation and room managment. 
+
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{dungeon_8h_adb0b6f9e74c772dd9d460bd2bfa63e86}\label{dungeon_8h_adb0b6f9e74c772dd9d460bd2bfa63e86} 
+\index{dungeon.h@{dungeon.h}!Dungeon@{Dungeon}}
+\index{Dungeon@{Dungeon}!dungeon.h@{dungeon.h}}
+\doxysubsubsection{\texorpdfstring{Dungeon}{Dungeon}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structDungeon}{Dungeon}} \mbox{\hyperlink{structDungeon}{Dungeon}}}
+
+
+
+Represents the entire active dungeon. 
+
+\Hypertarget{dungeon_8h_a67add4c319d288213afc47c290a3772c}\label{dungeon_8h_a67add4c319d288213afc47c290a3772c} 
+\index{dungeon.h@{dungeon.h}!DungeonRoom@{DungeonRoom}}
+\index{DungeonRoom@{DungeonRoom}!dungeon.h@{dungeon.h}}
+\doxysubsubsection{\texorpdfstring{DungeonRoom}{DungeonRoom}}
+{\footnotesize\ttfamily typedef struct \mbox{\hyperlink{structDungeonRoom}{Dungeon\+Room}} \mbox{\hyperlink{structDungeonRoom}{Dungeon\+Room}}}
+
+
+
+Defines a single room within the dungeon. 
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{dungeon_8h_ab540f7414f306325d92272bcef1e34e1}\label{dungeon_8h_ab540f7414f306325d92272bcef1e34e1} 
+\index{dungeon.h@{dungeon.h}!RoomType@{RoomType}}
+\index{RoomType@{RoomType}!dungeon.h@{dungeon.h}}
+\doxysubsubsection{\texorpdfstring{RoomType}{RoomType}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{dungeon_8h_ab540f7414f306325d92272bcef1e34e1}{Room\+Type}}}
+
+
+
+Represents the content of a single dungeon room. 
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROOM\_EMPTY@{ROOM\_EMPTY}!dungeon.h@{dungeon.h}}\index{dungeon.h@{dungeon.h}!ROOM\_EMPTY@{ROOM\_EMPTY}}}\Hypertarget{dungeon_8h_ab540f7414f306325d92272bcef1e34e1adb3ba64173cdd013687b6345f90ce98c}\label{dungeon_8h_ab540f7414f306325d92272bcef1e34e1adb3ba64173cdd013687b6345f90ce98c} 
+ROOM\+\_\+\+EMPTY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROOM\_TRAP@{ROOM\_TRAP}!dungeon.h@{dungeon.h}}\index{dungeon.h@{dungeon.h}!ROOM\_TRAP@{ROOM\_TRAP}}}\Hypertarget{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a5838c0d4ab3469cac262a702b4b50e65}\label{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a5838c0d4ab3469cac262a702b4b50e65} 
+ROOM\+\_\+\+TRAP&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ROOM\_FIGHT@{ROOM\_FIGHT}!dungeon.h@{dungeon.h}}\index{dungeon.h@{dungeon.h}!ROOM\_FIGHT@{ROOM\_FIGHT}}}\Hypertarget{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a955dcd3c5ddce08e6e5eb64968011bb1}\label{dungeon_8h_ab540f7414f306325d92272bcef1e34e1a955dcd3c5ddce08e6e5eb64968011bb1} 
+ROOM\+\_\+\+FIGHT&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{dungeon_8h_a5d7eb2309d5e140d64316ae566845714}\label{dungeon_8h_a5d7eb2309d5e140d64316ae566845714} 
+\index{dungeon.h@{dungeon.h}!create\_dungeon@{create\_dungeon}}
+\index{create\_dungeon@{create\_dungeon}!dungeon.h@{dungeon.h}}
+\doxysubsubsection{\texorpdfstring{create\_dungeon()}{create\_dungeon()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{structDungeon}{Dungeon}} create\+\_\+dungeon (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{game__types_8h_a64f46ea1c53b7a5677d078814b7b4752}{Mission\+Type}}}]{type }\end{DoxyParamCaption})}
+
+
+
+Generates a new procedural dungeon. 
+
+
+\begin{DoxyItemize}
+\item Algorithm\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Iterates from 0 to MAX\+\_\+\+DUNGEON\+\_\+\+ROOMS
+\item Rolls a die for each room based on the Mission Table
+\item Forces Mission Goals if they haven\textquotesingle{}t appeared by room 7 
+\begin{DoxyParams}{Parameters}
+{\em type} & The mission type \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A fully populated dungeon structure 
+\end{DoxyReturn}
+
+\end{DoxyEnumerate}\Hypertarget{dungeon_8h_ab5fa2f792fa6e8ccf0e8850956672ec9}\label{dungeon_8h_ab5fa2f792fa6e8ccf0e8850956672ec9} 
+\index{dungeon.h@{dungeon.h}!process\_current\_room@{process\_current\_room}}
+\index{process\_current\_room@{process\_current\_room}!dungeon.h@{dungeon.h}}
+\doxysubsubsection{\texorpdfstring{process\_current\_room()}{process\_current\_room()}}
+{\footnotesize\ttfamily void process\+\_\+current\+\_\+room (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structDungeon}{Dungeon}} \texorpdfstring{$\ast$}{*}}]{dungeon,  }\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero,  }\item[{\mbox{\hyperlink{structMissionStatus}{Mission\+Status}} \texorpdfstring{$\ast$}{*}}]{status }\end{DoxyParamCaption})}
+
+
+
+Procces the logic for the current room. 
+
+
+\begin{DoxyItemize}
+\item If there is a ROOM\+\_\+\+FIGHT call the combat system
+\item If there is a ROOM\+\_\+\+TRAP applies the trap damage
+\item If there is a ROOM\+\_\+\+EMPTY prints message 
+\begin{DoxyParams}{Parameters}
+{\em dungeon} & Pointer to the active dungeon \\
+\hline
+{\em hero} & Pointer to the hero \\
+\hline
+{\em status} & Pointer to the \doxylink{structMissionStatus}{Mission\+Status} \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}

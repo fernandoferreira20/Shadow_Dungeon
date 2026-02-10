@@ -1,0 +1,92 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/menus/main\+\_\+menu.c File Reference}
+\hypertarget{main__menu_8c}{}\label{main__menu_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/menus/main\_menu.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/menus/main\_menu.c}}
+
+
+implementation of main menu, calling helper functions, and konami code  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}core/game\+\_\+engine.\+h"{}}\newline
+{\ttfamily \#include "{}save\+\_\+system/save\+\_\+manager.\+h"{}}\newline
+{\ttfamily \#include "{}save\+\_\+system/cheats.\+h"{}}\newline
+{\ttfamily \#include "{}menus/menus.\+h"{}}\newline
+{\ttfamily \#include "{}menus/main\+\_\+menu.\+h"{}}\newline
+{\ttfamily \#include "{}utils/utils.\+h"{}}\newline
+Include dependency graph for main\+\_\+menu.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main__menu_8c_a7dfeba017d2ca043a2b1eeaf1707b367}{display\+\_\+initial\+\_\+menu}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Display the main game menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main__menu_8c_a0663e01e1fdad13fd61206b5c723d270}{handle\+\_\+new\+\_\+game}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em It helps to trigger the start of a new game. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main__menu_8c_a36853a82d1f4309055dd3853ca0b982a}{display\+\_\+load\+\_\+game\+\_\+menu}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Display the "{}\+Load Game"{} submenu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+implementation of main menu, calling helper functions, and konami code 
+
+\begin{DoxyAuthor}{Author}
+Otajon 908553 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main__menu_8c_a7dfeba017d2ca043a2b1eeaf1707b367}\label{main__menu_8c_a7dfeba017d2ca043a2b1eeaf1707b367} 
+\index{main\_menu.c@{main\_menu.c}!display\_initial\_menu@{display\_initial\_menu}}
+\index{display\_initial\_menu@{display\_initial\_menu}!main\_menu.c@{main\_menu.c}}
+\doxysubsubsection{\texorpdfstring{display\_initial\_menu()}{display\_initial\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+initial\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Display the main game menu. 
+
+
+\begin{DoxyItemize}
+\item Handles user input Note\+: The "{}cheat"{} is hidden until we input the konami code 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the master \doxylink{structGameData}{Game\+Data} Structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{main__menu_8c_a36853a82d1f4309055dd3853ca0b982a}\label{main__menu_8c_a36853a82d1f4309055dd3853ca0b982a} 
+\index{main\_menu.c@{main\_menu.c}!display\_load\_game\_menu@{display\_load\_game\_menu}}
+\index{display\_load\_game\_menu@{display\_load\_game\_menu}!main\_menu.c@{main\_menu.c}}
+\doxysubsubsection{\texorpdfstring{display\_load\_game\_menu()}{display\_load\_game\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+load\+\_\+game\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Display the "{}\+Load Game"{} submenu. 
+
+
+\begin{DoxyItemize}
+\item Lists available saves with their details
+\item Allow to load or delete a previous save ~\newline
+ 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the master \doxylink{structGameData}{Game\+Data} Structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{main__menu_8c_a0663e01e1fdad13fd61206b5c723d270}\label{main__menu_8c_a0663e01e1fdad13fd61206b5c723d270} 
+\index{main\_menu.c@{main\_menu.c}!handle\_new\_game@{handle\_new\_game}}
+\index{handle\_new\_game@{handle\_new\_game}!main\_menu.c@{main\_menu.c}}
+\doxysubsubsection{\texorpdfstring{handle\_new\_game()}{handle\_new\_game()}}
+{\footnotesize\ttfamily void handle\+\_\+new\+\_\+game (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+It helps to trigger the start of a new game. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & Poiner to the master \doxylink{structGameData}{Game\+Data} Structure \\
+\hline
+\end{DoxyParams}

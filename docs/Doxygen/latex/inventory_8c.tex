@@ -1,0 +1,79 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/items/inventory.c File Reference}
+\hypertarget{inventory_8c}{}\label{inventory_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/items/inventory.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/items/inventory.c}}
+
+
+\doxylink{structHero}{Hero} inventory management.  
+
+
+{\ttfamily \#include "{}inventory.\+h"{}}\newline
+{\ttfamily \#include "{}utils/random.\+h"{}}\newline
+{\ttfamily \#include "{}utils/utils.\+h"{}}\newline
+{\ttfamily \#include "{}menus/menus.\+h"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+Include dependency graph for inventory.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{inventory_8c_ae009f473561aab4cf4c9cd2256c2e105}{display\+\_\+inventory}} (const \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero)
+\begin{DoxyCompactList}\small\item\em Displays the \doxylink{structHero}{Hero}\textquotesingle{}s current status. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{inventory_8c_ae0ed60794a517892a4aca3afdd3cc172}{use\+\_\+health\+\_\+potion}} (\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}hero)
+\begin{DoxyCompactList}\small\item\em Using the health potion. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\doxylink{structHero}{Hero} inventory management. 
+
+\begin{DoxyAuthor}{Author}
+Otajon 908553 
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{inventory_8c_ae009f473561aab4cf4c9cd2256c2e105}\label{inventory_8c_ae009f473561aab4cf4c9cd2256c2e105} 
+\index{inventory.c@{inventory.c}!display\_inventory@{display\_inventory}}
+\index{display\_inventory@{display\_inventory}!inventory.c@{inventory.c}}
+\doxysubsubsection{\texorpdfstring{display\_inventory()}{display\_inventory()}}
+{\footnotesize\ttfamily void display\+\_\+inventory (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero }\end{DoxyParamCaption})}
+
+
+
+Displays the \doxylink{structHero}{Hero}\textquotesingle{}s current status. 
+
+
+\begin{DoxyItemize}
+\item Shows\+:
+\item Life Points
+\item Coins
+\item Possessed Items (Sword, Armor, etc)
+\item Potions Count 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the \doxylink{structHero}{Hero} structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{inventory_8c_ae0ed60794a517892a4aca3afdd3cc172}\label{inventory_8c_ae0ed60794a517892a4aca3afdd3cc172} 
+\index{inventory.c@{inventory.c}!use\_health\_potion@{use\_health\_potion}}
+\index{use\_health\_potion@{use\_health\_potion}!inventory.c@{inventory.c}}
+\doxysubsubsection{\texorpdfstring{use\_health\_potion()}{use\_health\_potion()}}
+{\footnotesize\ttfamily void use\+\_\+health\+\_\+potion (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structHero}{Hero}} \texorpdfstring{$\ast$}{*}}]{hero }\end{DoxyParamCaption})}
+
+
+
+Using the health potion. 
+
+
+\begin{DoxyItemize}
+\item Logic\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Checks if hero has potions
+\item If yes, roll the die (1-\/6)
+\item Restore that amount of health (up to MAX\+\_\+\+LIFE)
+\item Decrement potion count 
+\begin{DoxyParams}{Parameters}
+{\em hero} & Pointer to the \doxylink{structHero}{Hero} structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyEnumerate}

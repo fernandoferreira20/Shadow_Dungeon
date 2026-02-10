@@ -1,0 +1,80 @@
+\doxysection{/mnt/c/\+Users/alexa/\+Desktop/\+Shadow\+\_\+\+Dungeon/\+Shadow\+\_\+\+Dungeon/src/save\+\_\+system/cheats.c File Reference}
+\hypertarget{cheats_8c}{}\label{cheats_8c}\index{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/save\_system/cheats.c@{/mnt/c/Users/alexa/Desktop/Shadow\_Dungeon/Shadow\_Dungeon/src/save\_system/cheats.c}}
+
+
+Implementation of cheating menu.  
+
+
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include "{}cheats.\+h"{}}\newline
+{\ttfamily \#include "{}game\+\_\+types.\+h"{}}\newline
+{\ttfamily \#include "{}utils/utils.\+h"{}}\newline
+{\ttfamily \#include "{}menus/menus.\+h"{}}\newline
+Include dependency graph for cheats.\+c\+:
+% FIG 0
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{cheats_8c_ae3cc2f5563ac35736043eabcee296347}{check\+\_\+konami\+\_\+code}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data, char input)
+\begin{DoxyCompactList}\small\item\em Check a character input against the Konami Code sequence. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{cheats_8c_a14f47a18a7495be3c3d5235f6549b733}{display\+\_\+cheats\+\_\+menu}} (\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}data)
+\begin{DoxyCompactList}\small\item\em Displays the Cheat Menu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Implementation of cheating menu. 
+
+Manages hidden cheat functionality and the Konami code state.
+
+\begin{DoxyAuthor}{Author}
+Otajon 908553
+\end{DoxyAuthor}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{cheats_8c_ae3cc2f5563ac35736043eabcee296347}\label{cheats_8c_ae3cc2f5563ac35736043eabcee296347} 
+\index{cheats.c@{cheats.c}!check\_konami\_code@{check\_konami\_code}}
+\index{check\_konami\_code@{check\_konami\_code}!cheats.c@{cheats.c}}
+\doxysubsubsection{\texorpdfstring{check\_konami\_code()}{check\_konami\_code()}}
+{\footnotesize\ttfamily void check\+\_\+konami\+\_\+code (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data,  }\item[{char}]{input }\end{DoxyParamCaption})}
+
+
+
+Check a character input against the Konami Code sequence. 
+
+
+\begin{DoxyItemize}
+\item Sequence\+: w, w, s, s, a, d, a, d, b, a, \mbox{[}Space\mbox{]}
+\item Updates the state machine. If the full code is entered, sets data-\/\texorpdfstring{$>$}{>}cheats\+\_\+unlocked to true 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+{\em input} & The character input from the user \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyItemize}\Hypertarget{cheats_8c_a14f47a18a7495be3c3d5235f6549b733}\label{cheats_8c_a14f47a18a7495be3c3d5235f6549b733} 
+\index{cheats.c@{cheats.c}!display\_cheats\_menu@{display\_cheats\_menu}}
+\index{display\_cheats\_menu@{display\_cheats\_menu}!cheats.c@{cheats.c}}
+\doxysubsubsection{\texorpdfstring{display\_cheats\_menu()}{display\_cheats\_menu()}}
+{\footnotesize\ttfamily void display\+\_\+cheats\+\_\+menu (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structGameData}{Game\+Data}} \texorpdfstring{$\ast$}{*}}]{data }\end{DoxyParamCaption})}
+
+
+
+Displays the Cheat Menu. 
+
+
+\begin{DoxyItemize}
+\item Allow the user to\+:
+\end{DoxyItemize}
+\begin{DoxyEnumerate}
+\item Modify \doxylink{structHero}{Hero} Statistics (Life, Coins)
+\item Unlock the Final Mission immediately 
+\begin{DoxyParams}{Parameters}
+{\em data} & Pointer to the \doxylink{structGameData}{Game\+Data} structure \\
+\hline
+\end{DoxyParams}
+
+\end{DoxyEnumerate}
